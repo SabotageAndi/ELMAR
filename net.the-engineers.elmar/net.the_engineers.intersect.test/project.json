@@ -1,0 +1,23 @@
+﻿{
+    "dependencies": {
+        "FSharpSupport": "0.1-*",
+        "System.Data": "",
+        "FsSql": "1.0.0",
+        "FsUnit": "1.3.0.1",
+        "Xunit.KRunner": "1.0.0-alpha4",
+        "net.the_engineers.elmar.tests": "",
+        "net.the_engineers.intersect.db": ""
+    },
+    "code": [ "repositories.fs" ],
+    "language": {
+        "name": "F#",
+        "assembly": "FSharpSupport",
+        "projectReferenceProviderType": "FSharpSupport.FSharpProjectReferenceProvider"
+    },
+    "frameworks": {
+        "net45": { }
+    },
+    "commands": {
+        "test": "Xunit.KRunner"
+    }
+}
