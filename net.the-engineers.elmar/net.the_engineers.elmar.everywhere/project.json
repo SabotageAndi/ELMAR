@@ -1,0 +1,12 @@
+﻿{
+    "dependencies": {
+        "System" : ""
+    },
+
+    "frameworks": {
+       
+        "net45": {
+       
+        }
+    }
+}
