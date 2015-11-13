@@ -1,41 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.22129.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{CA0BCF24-099A-4F1A-B450-B0731D18375B}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mobile", "mobile", "{5E08CFD8-1524-45E4-9675-406A8E2C4FD3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "intersect", "intersect", "{56D42109-8AB1-4E4C-9946-0F92AF8DFE3C}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "elmar", "elmar", "{41FD81D9-99BA-4D0A-B2C1-10325802C343}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "jarvis", "jarvis", "{E9EDA361-CDF5-4D32-ADFA-C0B42E5A29BD}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{16E9B5A4-8B58-4553-8A8C-A0DAA7E62093}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".global", ".global", "{481D427E-CBCE-4C80-AF15-6DD207659DC6}"
-	ProjectSection(SolutionItems) = preProject
-		NuGet.config = NuGet.config
-	EndProjectSection
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "net.the_engineers.elmar.common", "net.the_engineers.elmar.common\net.the_engineers.elmar.common.kproj", "{2E7F11C6-FF90-4B18-9B39-89F0C49583FA}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "net.the_engineers.elmar.everywhere", "net.the_engineers.elmar.everywhere\net.the_engineers.elmar.everywhere.kproj", "{81A9182B-7BE9-4EC9-8C2A-B795982D8F67}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "net.the_engineers.elmar.everywhere.net45", "net.the_engineers.elmar.everywhere.net45\net.the_engineers.elmar.everywhere.net45.kproj", "{040FB375-73A2-4EDF-AC85-387AD70EB46A}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "net.the_engineers.intersect", "net.the_engineers.intersect\net.the_engineers.intersect.kproj", "{7B540CCE-39CA-4CA0-84FB-CCC0099F8A51}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "net.the_engineers.intersect.db", "net.the_engineers.intersect.db\net.the_engineers.intersect.db.kproj", "{08FBE7E8-0286-4B7B-9BDB-FF6C058C9470}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "net.the_engineers.intersect.test", "net.the_engineers.intersect.test\net.the_engineers.intersect.test.kproj", "{AAE8B6C4-70A2-4EBB-A03F-1DE81813A7BE}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "net.the_engineers.elmar.tests", "net.the_engineers.elmar.tests\net.the_engineers.elmar.tests.kproj", "{61752F54-964A-40FF-B3DD-1F189390A504}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Elmar.Droid", "Elmar.Droid\Elmar.Droid.fsproj", "{7CA36438-722A-4A3A-86B2-50931AEEA65F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,45 +13,17 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2E7F11C6-FF90-4B18-9B39-89F0C49583FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2E7F11C6-FF90-4B18-9B39-89F0C49583FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2E7F11C6-FF90-4B18-9B39-89F0C49583FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2E7F11C6-FF90-4B18-9B39-89F0C49583FA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{81A9182B-7BE9-4EC9-8C2A-B795982D8F67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{81A9182B-7BE9-4EC9-8C2A-B795982D8F67}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{81A9182B-7BE9-4EC9-8C2A-B795982D8F67}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{81A9182B-7BE9-4EC9-8C2A-B795982D8F67}.Release|Any CPU.Build.0 = Release|Any CPU
-		{040FB375-73A2-4EDF-AC85-387AD70EB46A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{040FB375-73A2-4EDF-AC85-387AD70EB46A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{040FB375-73A2-4EDF-AC85-387AD70EB46A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{040FB375-73A2-4EDF-AC85-387AD70EB46A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7B540CCE-39CA-4CA0-84FB-CCC0099F8A51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7B540CCE-39CA-4CA0-84FB-CCC0099F8A51}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7B540CCE-39CA-4CA0-84FB-CCC0099F8A51}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7B540CCE-39CA-4CA0-84FB-CCC0099F8A51}.Release|Any CPU.Build.0 = Release|Any CPU
-		{08FBE7E8-0286-4B7B-9BDB-FF6C058C9470}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{08FBE7E8-0286-4B7B-9BDB-FF6C058C9470}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{08FBE7E8-0286-4B7B-9BDB-FF6C058C9470}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{08FBE7E8-0286-4B7B-9BDB-FF6C058C9470}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AAE8B6C4-70A2-4EBB-A03F-1DE81813A7BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AAE8B6C4-70A2-4EBB-A03F-1DE81813A7BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AAE8B6C4-70A2-4EBB-A03F-1DE81813A7BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AAE8B6C4-70A2-4EBB-A03F-1DE81813A7BE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{61752F54-964A-40FF-B3DD-1F189390A504}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{61752F54-964A-40FF-B3DD-1F189390A504}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{61752F54-964A-40FF-B3DD-1F189390A504}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{61752F54-964A-40FF-B3DD-1F189390A504}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CA36438-722A-4A3A-86B2-50931AEEA65F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CA36438-722A-4A3A-86B2-50931AEEA65F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CA36438-722A-4A3A-86B2-50931AEEA65F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7CA36438-722A-4A3A-86B2-50931AEEA65F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CA36438-722A-4A3A-86B2-50931AEEA65F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CA36438-722A-4A3A-86B2-50931AEEA65F}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{2E7F11C6-FF90-4B18-9B39-89F0C49583FA} = {16E9B5A4-8B58-4553-8A8C-A0DAA7E62093}
-		{81A9182B-7BE9-4EC9-8C2A-B795982D8F67} = {16E9B5A4-8B58-4553-8A8C-A0DAA7E62093}
-		{040FB375-73A2-4EDF-AC85-387AD70EB46A} = {16E9B5A4-8B58-4553-8A8C-A0DAA7E62093}
-		{7B540CCE-39CA-4CA0-84FB-CCC0099F8A51} = {56D42109-8AB1-4E4C-9946-0F92AF8DFE3C}
-		{08FBE7E8-0286-4B7B-9BDB-FF6C058C9470} = {56D42109-8AB1-4E4C-9946-0F92AF8DFE3C}
-		{AAE8B6C4-70A2-4EBB-A03F-1DE81813A7BE} = {56D42109-8AB1-4E4C-9946-0F92AF8DFE3C}
-		{61752F54-964A-40FF-B3DD-1F189390A504} = {16E9B5A4-8B58-4553-8A8C-A0DAA7E62093}
+		{7CA36438-722A-4A3A-86B2-50931AEEA65F} = {5E08CFD8-1524-45E4-9675-406A8E2C4FD3}
 	EndGlobalSection
 EndGlobal

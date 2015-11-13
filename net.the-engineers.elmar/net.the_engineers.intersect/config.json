@@ -1,7 +1,0 @@
-﻿{
-    "Data": {
-        "DefaultConnection": { 
-            "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=aspnetvnext-net.the_engineers.intersect-78b438a4-cc75-4220-ac89-1a290280cb3b;Trusted_Connection=True;MultipleActiveResultSets=true"
-        }
-    }
-}
