@@ -5,22 +5,22 @@
     android:layout_height="fill_parent">
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent" />
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentRight="true">
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent">
             <View
-                style="@style/Divider" />
+                style="@style/DividerVertical" />
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
                 android:padding="10pt">
                 <ImageButton xmlns:tools="http://schemas.android.com/tools"
                     android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
                     android:layout_weight="1"
                     tools:visibility="invisible"
                     android:visibility="invisible"
-                    android:layout_gravity="center_vertical" />
+                    android:layout_gravity="center" />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
                     android:src="@drawable/ic_settings_applications_white_36dp"
                     android:background="@android:color/transparent"
                     android:layout_weight="1"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="center"
                     android:id="@+id/preferences" />
             </LinearLayout>
         </LinearLayout>

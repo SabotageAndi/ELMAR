@@ -1,4 +1,5 @@
-﻿using Android.App;
+﻿using System;
+using Android.App;
 using Android.Content;
 using Android.Widget;
 using Android.OS;
@@ -7,23 +8,13 @@ using TinyIoC;
 
 namespace elmar.droid
 {
-    [BroadcastReceiver()]
-    [IntentFilter(new [] {Constants.ELMAR_MEDIABUTTON_PRESSED})]
-
-    public class MediaButtonBroadCastReceiver : BroadcastReceiver
-    {
-        public override void OnReceive(Context context, Intent intent)
-        {
-            Toast.MakeText(context, "Key pressed", ToastLength.Long).Show();
-        }
-    }
-
-
-  
-
     [Activity(Label = "elmar.droid", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
+        private ImageButton _startVoiceButton;
+        private ImageButton _preferenceButton;
+
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -39,6 +30,17 @@ namespace elmar.droid
             var ttsChecker = TinyIoCContainer.Current.Resolve<TTSChecker>();
             ttsChecker.SetActivity(this);
             ttsChecker.checkTTS();
+
+            _startVoiceButton = FindViewById<ImageButton>(Resource.Id.startVoice);
+            _preferenceButton = FindViewById<ImageButton>(Resource.Id.preferences);
+
+            _startVoiceButton.Click += StartVoiceButtonOnClick;
+        }
+
+        private void StartVoiceButtonOnClick(object sender, EventArgs eventArgs)
+        {
+            var voiceRecognizer = new VoiceRecognizer(this);
+            voiceRecognizer.StartVoiceRecognition();
         }
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)

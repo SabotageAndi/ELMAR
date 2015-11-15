@@ -69,6 +69,25 @@ namespace elmar.droid
 			}
 		}
 		
+		public partial class Id
+		{
+			
+			// aapt resource value: 0x7f060001
+			public const int preferences = 2131099649;
+			
+			// aapt resource value: 0x7f060000
+			public const int startVoice = 2131099648;
+			
+			static Id()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Id()
+			{
+			}
+		}
+		
 		public partial class Layout
 		{
 			
@@ -109,6 +128,9 @@ namespace elmar.droid
 			
 			// aapt resource value: 0x7f050000
 			public const int Divider = 2131034112;
+			
+			// aapt resource value: 0x7f050001
+			public const int DividerVertical = 2131034113;
 			
 			static Style()
 			{
