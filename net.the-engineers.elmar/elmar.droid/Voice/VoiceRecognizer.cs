@@ -11,6 +11,7 @@ using Android.Speech;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using TinyIoC;
 
 namespace elmar.droid
 {
@@ -18,10 +19,13 @@ namespace elmar.droid
     {
         private readonly Context _context;
         private readonly SpeechRecognizer _speechRecognizer;
+        private readonly VoiceOutput _voiceOutput;
 
         public VoiceRecognizer(Context context)
         {
             _context = context;
+
+            _voiceOutput = TinyIoCContainer.Current.Resolve<VoiceOutput>();
 
             _speechRecognizer = SpeechRecognizer.CreateSpeechRecognizer(_context);
             _speechRecognizer.SetRecognitionListener(this);
@@ -82,14 +86,17 @@ namespace elmar.droid
 
             if (String.IsNullOrWhiteSpace(firstText))
             {
-                messageText = "nicht erkannt";
+                var text = _context.Resources.GetString(Resource.String.NotRecognized);
+                messageText = text;
             }
             else
             {
                 messageText = firstText;
             }
-
             Toast.MakeText(_context, messageText, ToastLength.Short).Show();
+
+            _voiceOutput.Speek(messageText);
+
         }
 
         public void OnRmsChanged(float rmsdB)

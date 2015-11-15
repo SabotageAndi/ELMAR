@@ -1,12 +1,9 @@
-﻿using System;
-using Android.App;
+﻿using Android.App;
 using Android.Content;
-using Android.Media.Session;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
 using Android.OS;
-using MediaController = Android.Media.Session.MediaController;
+using elmar.droid.Voice;
+using TinyIoC;
 
 namespace elmar.droid
 {
@@ -17,7 +14,6 @@ namespace elmar.droid
     {
         public override void OnReceive(Context context, Intent intent)
         {
-            var intentAction = intent.Action;
             Toast.MakeText(context, "Key pressed", ToastLength.Long).Show();
         }
     }
@@ -28,8 +24,6 @@ namespace elmar.droid
     [Activity(Label = "elmar.droid", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
-        private MediaSession mediaSession;
-
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -40,6 +34,17 @@ namespace elmar.droid
 
             var serviceIntent = new Intent(this, typeof(MediaButtonService));
             StartService(serviceIntent);
+
+
+            var ttsChecker = TinyIoCContainer.Current.Resolve<TTSChecker>();
+            ttsChecker.SetActivity(this);
+            ttsChecker.checkTTS();
+        }
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            var ttsChecker = TinyIoCContainer.Current.Resolve<TTSChecker>();
+            ttsChecker.onResult(requestCode, resultCode, data);
         }
     }
 }
