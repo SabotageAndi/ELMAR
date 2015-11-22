@@ -72,6 +72,12 @@ namespace elmar.droid
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f060002
+			public const int inputLanguage = 2131099650;
+			
+			// aapt resource value: 0x7f060003
+			public const int outputLanguage = 2131099651;
+			
 			// aapt resource value: 0x7f060001
 			public const int preferences = 2131099649;
 			
@@ -113,11 +119,17 @@ namespace elmar.droid
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f040002
+			public const int ApplicationName = 2130968578;
+			
 			// aapt resource value: 0x7f040000
-			public const int ApplicationName = 2130968576;
+			public const int InputLanguage = 2130968576;
+			
+			// aapt resource value: 0x7f040003
+			public const int NotRecognized = 2130968579;
 			
 			// aapt resource value: 0x7f040001
-			public const int NotRecognized = 2130968577;
+			public const int OutputLanguage = 2130968577;
 			
 			static String()
 			{
@@ -137,6 +149,15 @@ namespace elmar.droid
 			
 			// aapt resource value: 0x7f050001
 			public const int DividerVertical = 2131034113;
+			
+			// aapt resource value: 0x7f050002
+			public const int SettingsEntry = 2131034114;
+			
+			// aapt resource value: 0x7f050003
+			public const int SettingsEntryText = 2131034115;
+			
+			// aapt resource value: 0x7f050004
+			public const int SettingsEntryValue = 2131034116;
 			
 			static Style()
 			{

@@ -10,6 +10,8 @@ using Android.Runtime;
 using Android.Speech.Tts;
 using Android.Views;
 using Android.Widget;
+using elmar.droid.Common;
+using elmar.droid.Settings;
 using elmar.droid.Voice;
 using TinyIoC;
 
@@ -26,9 +28,13 @@ namespace elmar.droid
         {
             base.OnCreate();
 
+            TinyIoCContainer.Current.Register(ApplicationContext);
+
             TinyIoCContainer.Current.Register<VoiceOutput>().AsSingleton();
 
             TinyIoCContainer.Current.Register<TTSChecker>().AsSingleton();
+            TinyIoCContainer.Current.Register<LanguageManager>().AsSingleton();
+            TinyIoCContainer.Current.Register<SettingsManager>().AsSingleton();
         }
     }
 }

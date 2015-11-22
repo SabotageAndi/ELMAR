@@ -10,4 +10,25 @@
     <item name="android:layout_height">match_parent</item>
     <item name="android:background">#ffffff</item>
   </style>
+
+  <style name="SettingsEntry">
+    <item name="android:paddingLeft">25dp</item>
+    <item name="android:paddingTop">25dp</item>
+    <item name="android:paddingBottom">25dp</item>
+    <item name="android:paddingRight">25dp</item>
+    <item name="android:orientation">horizontal</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+  </style>
+
+  <style name="SettingsEntryText">
+    <item name="android:textColor">@android:color/white</item>
+    <item name="android:textSize">18sp</item>
+  </style>
+  
+  <style name="SettingsEntryValue">
+    <item name="android:textColor">@android:color/darker_gray</item>
+    <item name="android:textSize">16sp</item>
+    <item name="android:gravity">right</item>
+  </style>
 </resources>
