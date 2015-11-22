@@ -168,7 +168,7 @@ namespace elmar.droid
 			public const int OutputLanguage = 2130968578;
 			
 			// aapt resource value: 0x7f040000
-			public const int Shutdown = 2130968576;
+			public const int ShutdownEvent = 2130968576;
 			
 			static String()
 			{

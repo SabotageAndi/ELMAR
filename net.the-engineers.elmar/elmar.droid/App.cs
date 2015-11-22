@@ -35,6 +35,16 @@ namespace elmar.droid
             TinyIoCContainer.Current.Register<TTSChecker>().AsSingleton();
             TinyIoCContainer.Current.Register<LanguageManager>().AsSingleton();
             TinyIoCContainer.Current.Register<SettingsManager>().AsSingleton();
+            TinyIoCContainer.Current.Register<EventManager>().AsSingleton();
+
+            RegisterEvents();
+        }
+
+        private void RegisterEvents()
+        {
+            var eventManager = TinyIoCContainer.Current.Resolve<EventManager>();
+
+            eventManager.RegisterEvent(EventType.DeviceShutDown, Resource.String.ShutdownEvent, true, "Device is shutdowning");
         }
     }
 }

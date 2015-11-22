@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Common\Event.cs" />
+    <Compile Include="Common\EventManager.cs" />
     <Compile Include="Common\Language.cs" />
     <Compile Include="Common\LanguageManager.cs" />
     <Compile Include="Constants.cs" />
@@ -168,7 +169,7 @@
     <AndroidResource Include="Resources\values\langsettings.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\lang_events.xml" />
+    <AndroidResource Include="Resources\values\events.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

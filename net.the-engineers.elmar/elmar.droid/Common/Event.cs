@@ -12,14 +12,19 @@ using Android.Widget;
 
 namespace elmar.droid.Common
 {
+    enum EventType
+    {
+        DeviceShutDown
+    }
+
     class Event
     {
-        public Event(string name)
+        public Event(int nameId)
         {
-            Name = name;
+            NameId = nameId;
         }
 
-        public string Name { get;  }
+        public int NameId { get;  }
 
         public bool Enabled { get; set; }
 

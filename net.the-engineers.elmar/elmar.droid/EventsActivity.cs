@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using elmar.droid.Common;
+using TinyIoC;
 
 namespace elmar.droid
 {
@@ -18,15 +19,18 @@ namespace elmar.droid
     {
         private ListView _events;
         private EventAdapter _eventAdapter;
+        private EventManager _eventManager;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
+            _eventManager = TinyIoCContainer.Current.Resolve<EventManager>();
+
             SetContentView(Resource.Layout.Events);
 
             _events = FindViewById<ListView>(Resource.Id.event_list);
-            _eventAdapter = new EventAdapter(this, new List<Event>());
+            _eventAdapter = new EventAdapter(this, _eventManager.GetRegisteredEvents());
             _events.Adapter = _eventAdapter;
         }
 
@@ -58,10 +62,10 @@ namespace elmar.droid
                 var item = this[position];
 
                 var checkBox = convertView.FindViewById<CheckBox>(Resource.Id.eventActivated);
-                checkBox.Activated = item.Enabled;
+                checkBox.Checked = item.Enabled;
 
                 var eventName = convertView.FindViewById<TextView>(Resource.Id.eventName);
-                eventName.Text = item.Name;
+                eventName.Text = _context.Resources.GetString(item.NameId);
 
                 var eventOutput = convertView.FindViewById<TextView>(Resource.Id.eventOutput);
                 eventOutput.Text = item.OutputText;
