@@ -11,6 +11,7 @@ using Android.Speech;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using elmar.droid.Settings;
 using TinyIoC;
 
 namespace elmar.droid
@@ -21,11 +22,14 @@ namespace elmar.droid
         private readonly SpeechRecognizer _speechRecognizer;
         private readonly VoiceOutput _voiceOutput;
 
+        private readonly SettingsManager _settingsManager;
+
         public VoiceRecognizer(Context context)
         {
             _context = context;
 
             _voiceOutput = TinyIoCContainer.Current.Resolve<VoiceOutput>();
+            _settingsManager = TinyIoCContainer.Current.Resolve<SettingsManager>();
 
             _speechRecognizer = SpeechRecognizer.CreateSpeechRecognizer(_context);
             _speechRecognizer.SetRecognitionListener(this);
@@ -34,7 +38,7 @@ namespace elmar.droid
         public void StartVoiceRecognition()
         {
             Intent intent = new Intent(RecognizerIntent.ActionRecognizeSpeech);
-            intent.PutExtra(RecognizerIntent.ExtraLanguage, "de-AT");
+            intent.PutExtra(RecognizerIntent.ExtraLanguage, _settingsManager.InputLanguage.ISOCode);
 
             intent.PutExtra(RecognizerIntent.ExtraMaxResults, 5);
             _speechRecognizer.StartListening(intent);
