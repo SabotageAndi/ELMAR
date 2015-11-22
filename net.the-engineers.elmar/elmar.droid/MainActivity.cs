@@ -35,6 +35,13 @@ namespace elmar.droid
             _preferenceButton = FindViewById<ImageButton>(Resource.Id.preferences);
 
             _startVoiceButton.Click += StartVoiceButtonOnClick;
+            _preferenceButton.Click += StartPreferenceActivity;
+        }
+
+        private void StartPreferenceActivity(object sender, EventArgs e)
+        {
+            var intent = new Intent(this, typeof(SettingsActivity));
+            StartActivity(intent);
         }
 
         private void StartVoiceButtonOnClick(object sender, EventArgs eventArgs)

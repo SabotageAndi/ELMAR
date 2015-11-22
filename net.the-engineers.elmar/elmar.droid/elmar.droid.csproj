@@ -56,6 +56,7 @@
     <Compile Include="MediaButtonService.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SettingsActivity.cs" />
     <Compile Include="SystemBootBroadcastReceiver.cs" />
     <Compile Include="TinyIoC.cs" />
     <Compile Include="Voice\VoiceOutput.cs" />
@@ -68,6 +69,9 @@
     <None Include="Assets\AboutAssets.txt" />
     <AndroidResource Include="Resources\layout-land\Main.axml" />
     <AndroidResource Include="Resources\layout\logo.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Settings.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
