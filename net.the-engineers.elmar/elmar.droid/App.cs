@@ -28,21 +28,21 @@ namespace elmar.droid
         {
             base.OnCreate();
 
-            TinyIoCContainer.Current.Register(ApplicationContext);
-
-            TinyIoCContainer.Current.Register<VoiceOutput>().AsSingleton();
-
-            TinyIoCContainer.Current.Register<TTSChecker>().AsSingleton();
-            TinyIoCContainer.Current.Register<LanguageManager>().AsSingleton();
-            TinyIoCContainer.Current.Register<SettingsManager>().AsSingleton();
-            TinyIoCContainer.Current.Register<EventManager>().AsSingleton();
+            Container.Register(ApplicationContext);
+            
+            Container.Register<VoiceOutput>().AsSingleton();
+            
+            Container.Register<TTSChecker>().AsSingleton();
+            Container.Register<LanguageManager>().AsSingleton();
+            Container.Register<SettingsManager>().AsSingleton();
+            Container.Register<EventManager>().AsSingleton();
 
             RegisterEvents();
         }
 
         private void RegisterEvents()
         {
-            var eventManager = TinyIoCContainer.Current.Resolve<EventManager>();
+            var eventManager = Container.Resolve<EventManager>();
 
             eventManager.RegisterEvent(EventType.DeviceShutDown, Resource.String.ShutdownEvent, true, "Device is shutdowning");
         }

@@ -25,7 +25,7 @@ namespace elmar.droid
         {
             base.OnCreate(savedInstanceState);
 
-            _eventManager = TinyIoCContainer.Current.Resolve<EventManager>();
+            _eventManager = Container.Resolve<EventManager>();
 
             SetContentView(Resource.Layout.Events);
 

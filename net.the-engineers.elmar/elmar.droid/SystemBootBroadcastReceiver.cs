@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using elmar.droid.Common;
 using TinyIoC;
 
 namespace elmar.droid
@@ -19,7 +20,7 @@ namespace elmar.droid
     {
         public override void OnReceive(Context context, Intent intent)
         {
-            var voiceOutput = TinyIoCContainer.Current.Resolve<VoiceOutput>();
+            var voiceOutput = Container.Resolve<VoiceOutput>();
             voiceOutput.Enable(); //TODO: nicht einfach blind aktivieren
 
             var serviceIntent = new Intent(context, typeof(MediaButtonService));

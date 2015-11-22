@@ -3,6 +3,7 @@ using Android.App;
 using Android.Content;
 using Android.Widget;
 using Android.OS;
+using elmar.droid.Common;
 using elmar.droid.Voice;
 using TinyIoC;
 
@@ -27,7 +28,7 @@ namespace elmar.droid
             StartService(serviceIntent);
 
 
-            var ttsChecker = TinyIoCContainer.Current.Resolve<TTSChecker>();
+            var ttsChecker = Container.Resolve<TTSChecker>();
             ttsChecker.SetActivity(this);
             ttsChecker.checkTTS();
 
@@ -52,7 +53,7 @@ namespace elmar.droid
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
-            var ttsChecker = TinyIoCContainer.Current.Resolve<TTSChecker>();
+            var ttsChecker = Container.Resolve<TTSChecker>();
             ttsChecker.onResult(requestCode, resultCode, data);
         }
     }

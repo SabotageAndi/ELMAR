@@ -30,7 +30,7 @@ namespace elmar.droid
         {
             base.OnCreate(savedInstanceState);
 
-            _settingsManager = TinyIoC.TinyIoCContainer.Current.Resolve<SettingsManager>();
+            _settingsManager = Container.Resolve<SettingsManager>();
 
             SetContentView(Resource.Layout.Settings);
 

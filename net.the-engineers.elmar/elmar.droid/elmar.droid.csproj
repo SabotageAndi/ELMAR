@@ -50,12 +50,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Common\Container.cs" />
     <Compile Include="Common\Event.cs" />
     <Compile Include="Common\EventManager.cs" />
     <Compile Include="Common\Language.cs" />
     <Compile Include="Common\LanguageManager.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="EventsActivity.cs" />
+    <Compile Include="Events\ShutdownEvent.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MediaButtonService.cs" />

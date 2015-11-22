@@ -32,6 +32,18 @@ namespace elmar.droid.Common
         public List<Event> GetRegisteredEvents()
         {
             return _events.Values.ToList();
-        } 
+        }
+
+        public Event GetEvent(EventType eventType)
+        {
+            return _events[eventType];
+        }
+
+        public bool EventIsEnabled(EventType eventType)
+        {
+            var @event = GetEvent(eventType);
+
+            return @event.Enabled;
+        }
     }
 }
