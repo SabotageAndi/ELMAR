@@ -72,11 +72,17 @@ namespace elmar.droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060002
-			public const int inputLanguage = 2131099650;
-			
 			// aapt resource value: 0x7f060003
-			public const int outputLanguage = 2131099651;
+			public const int inputLanguage = 2131099651;
+			
+			// aapt resource value: 0x7f060002
+			public const int inputLanguageRow = 2131099650;
+			
+			// aapt resource value: 0x7f060005
+			public const int outputLanguage = 2131099653;
+			
+			// aapt resource value: 0x7f060004
+			public const int outputLanguageRow = 2131099652;
 			
 			// aapt resource value: 0x7f060001
 			public const int preferences = 2131099649;

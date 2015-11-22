@@ -35,6 +35,15 @@ namespace elmar.droid.Settings
             }
         }
 
+        public void SetInputLanguage(Language language)
+        {
+            var sharedPreferenceManager = GetSharedPreferences();
+            var editor = sharedPreferenceManager.Edit();
+
+            editor.PutString("inputLanguage", language.ISOCode);
+            editor.Commit();
+        }
+
         public Language OutputLanguage
         {
             get
@@ -44,6 +53,15 @@ namespace elmar.droid.Settings
 
                 return language;
             }
+        }
+
+        public void SetOutputLanguage(Language language)
+        {
+            var sharedPreferenceManager = GetSharedPreferences();
+            var editor = sharedPreferenceManager.Edit();
+
+            editor.PutString("outputLanguage", language.ISOCode);
+            editor.Commit();
         }
 
         private ISharedPreferences GetSharedPreferences()

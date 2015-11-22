@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
+        android:id="@+id/inputLanguageRow"
         style="@style/SettingsEntry">
         <TextView
             android:layout_width="wrap_content"
@@ -19,6 +20,7 @@
     <View
         style="@style/Divider" />
     <LinearLayout
+        android:id="@+id/outputLanguageRow"
         style="@style/SettingsEntry">
         <TextView
             android:layout_width="wrap_content"
