@@ -45,6 +45,7 @@ namespace elmar.droid
             var eventManager = Container.Resolve<EventManager>();
 
             eventManager.RegisterEvent(EventType.DeviceShutDown, Resource.String.ShutdownEvent, true, "Device is shutdowning");
+            eventManager.RegisterEvent(EventType.SMS_Receiving, Resource.String.SMSReceivingEvent, true, "SMS received");
         }
     }
 }

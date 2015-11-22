@@ -149,23 +149,26 @@ namespace elmar.droid
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f040006
+			public const int ApplicationName = 2130968582;
+			
 			// aapt resource value: 0x7f040005
-			public const int ApplicationName = 2130968581;
+			public const int Commands = 2130968581;
 			
 			// aapt resource value: 0x7f040004
-			public const int Commands = 2130968580;
-			
-			// aapt resource value: 0x7f040003
-			public const int Events = 2130968579;
-			
-			// aapt resource value: 0x7f040001
-			public const int InputLanguage = 2130968577;
-			
-			// aapt resource value: 0x7f040006
-			public const int NotRecognized = 2130968582;
+			public const int Events = 2130968580;
 			
 			// aapt resource value: 0x7f040002
-			public const int OutputLanguage = 2130968578;
+			public const int InputLanguage = 2130968578;
+			
+			// aapt resource value: 0x7f040007
+			public const int NotRecognized = 2130968583;
+			
+			// aapt resource value: 0x7f040003
+			public const int OutputLanguage = 2130968579;
+			
+			// aapt resource value: 0x7f040001
+			public const int SMSReceivingEvent = 2130968577;
 			
 			// aapt resource value: 0x7f040000
 			public const int ShutdownEvent = 2130968576;

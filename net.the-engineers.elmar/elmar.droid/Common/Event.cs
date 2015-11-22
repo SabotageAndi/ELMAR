@@ -12,9 +12,11 @@ using Android.Widget;
 
 namespace elmar.droid.Common
 {
-    enum EventType
+    public enum EventType
     {
-        DeviceShutDown
+        DeviceShutDown,
+        SMS_Receiving,
+
     }
 
     class Event

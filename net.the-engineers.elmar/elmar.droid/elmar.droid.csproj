@@ -57,7 +57,9 @@
     <Compile Include="Common\LanguageManager.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="EventsActivity.cs" />
-    <Compile Include="Events\ShutdownEvent.cs" />
+    <Compile Include="Events\ShutdownReceiver.cs" />
+    <Compile Include="Events\SMSReceiving.cs" />
+    <Compile Include="Events\StandardBroadcastReceiver.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MediaButtonService.cs" />
