@@ -2,4 +2,6 @@
 <resources>
   <string name="InputLanguage" >Input Language</string>
   <string name="OutputLanguage">Output Language</string>
+  <string name="Events">Events</string>
+  <string name="Commands">Commands</string>
 </resources>

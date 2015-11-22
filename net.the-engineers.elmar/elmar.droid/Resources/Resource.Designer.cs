@@ -72,6 +72,12 @@ namespace elmar.droid
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f060007
+			public const int commandsRow = 2131099655;
+			
+			// aapt resource value: 0x7f060006
+			public const int eventsRow = 2131099654;
+			
 			// aapt resource value: 0x7f060003
 			public const int inputLanguage = 2131099651;
 			
@@ -125,14 +131,20 @@ namespace elmar.droid
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f040004
+			public const int ApplicationName = 2130968580;
+			
+			// aapt resource value: 0x7f040003
+			public const int Commands = 2130968579;
+			
 			// aapt resource value: 0x7f040002
-			public const int ApplicationName = 2130968578;
+			public const int Events = 2130968578;
 			
 			// aapt resource value: 0x7f040000
 			public const int InputLanguage = 2130968576;
 			
-			// aapt resource value: 0x7f040003
-			public const int NotRecognized = 2130968579;
+			// aapt resource value: 0x7f040005
+			public const int NotRecognized = 2130968581;
 			
 			// aapt resource value: 0x7f040001
 			public const int OutputLanguage = 2130968577;
