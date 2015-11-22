@@ -24,6 +24,7 @@ namespace elmar.droid
 
         private LinearLayout _inputLanguageRow;
         private LinearLayout _outputLanguageRow;
+        private LinearLayout _eventRow;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -38,12 +39,20 @@ namespace elmar.droid
 
             _inputLanguageRow = FindViewById<LinearLayout>(Resource.Id.inputLanguageRow);
             _outputLanguageRow = FindViewById<LinearLayout>(Resource.Id.outputLanguageRow);
+            _eventRow = FindViewById<LinearLayout>(Resource.Id.eventsRow);
 
             UpdateInputLanguage();
             UpdateOutputLanguage();
 
             _inputLanguageRow.Click += (s, e) => ChooseLanguage(_settingsManager.SetInputLanguage, UpdateInputLanguage);
             _outputLanguageRow.Click += (s, e) => ChooseLanguage(_settingsManager.SetOutputLanguage, UpdateOutputLanguage);
+            _eventRow.Click += OpenEvents;
+        }
+
+        private void OpenEvents(object sender, EventArgs e)
+        {
+            var intent = new Intent(this, typeof(EventsActivity));
+            StartActivity(intent);
         }
 
         private void UpdateOutputLanguage()
