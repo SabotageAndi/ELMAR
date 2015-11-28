@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using SQLite.Net.Attributes;
 
 namespace elmar.droid.Common
 {
@@ -21,15 +22,22 @@ namespace elmar.droid.Common
 
     class Event
     {
-        public Event(int nameId)
+        public Event()
         {
-            NameId = nameId;
         }
 
-        public int NameId { get;  }
+        public Event(int id)
+        {
+            Id = id;
+        }
 
+        [PrimaryKey]
+        public int Id { get; set; }
+
+        [Column("Enabled")]
         public bool Enabled { get; set; }
 
+        [Column("OutputText")]
         public string OutputText { get; set; }  
     }
 }

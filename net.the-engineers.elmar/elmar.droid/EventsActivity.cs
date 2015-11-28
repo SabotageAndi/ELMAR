@@ -30,8 +30,13 @@ namespace elmar.droid
             SetContentView(Resource.Layout.Events);
 
             _events = FindViewById<ListView>(Resource.Id.event_list);
-            _eventAdapter = new EventAdapter(this, _eventManager.GetRegisteredEvents());
+            _eventAdapter = new EventAdapter(this, _eventManager.GetRegisteredEvents(), OnEventChanged);
             _events.Adapter = _eventAdapter;
+        }
+
+        private void OnEventChanged(Event changedEvent)
+        {
+            _eventManager.Save(changedEvent);
         }
 
 
@@ -39,11 +44,13 @@ namespace elmar.droid
         {
             private readonly Context _context;
             private readonly List<Event> _events;
+            private readonly Action<Event> _onEventChanged;
 
-            public EventAdapter(Context context, List<Event> events)
+            public EventAdapter(Context context, List<Event> events, Action<Event> onEventChanged)
             {
                 _context = context;
                 _events = events;
+                _onEventChanged = onEventChanged;
             }
 
             public override long GetItemId(int position)
@@ -62,15 +69,28 @@ namespace elmar.droid
                 var item = this[position];
 
                 var checkBox = convertView.FindViewById<CheckBox>(Resource.Id.eventActivated);
+                checkBox.Tag = position;
                 checkBox.Checked = item.Enabled;
+                checkBox.CheckedChange += CheckBoxOnCheckedChange;
 
                 var eventName = convertView.FindViewById<TextView>(Resource.Id.eventName);
-                eventName.Text = _context.Resources.GetString(item.NameId);
+                eventName.Text = _context.Resources.GetString(item.Id);
 
                 var eventOutput = convertView.FindViewById<TextView>(Resource.Id.eventOutput);
                 eventOutput.Text = item.OutputText;
 
                 return convertView;
+            }
+
+            private void CheckBoxOnCheckedChange(object sender, CompoundButton.CheckedChangeEventArgs checkedChangeEventArgs)
+            {
+                var checkBox = (CheckBox) sender;
+                int position = (int) checkBox.Tag;
+                var changedEvent = this[position];
+
+                changedEvent.Enabled = checkedChangeEventArgs.IsChecked;
+
+                _onEventChanged(changedEvent);
             }
 
             public override int Count => _events.Count;

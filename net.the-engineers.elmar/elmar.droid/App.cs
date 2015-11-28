@@ -1,19 +1,10 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
-using Android.Content;
-using Android.OS;
 using Android.Runtime;
-using Android.Speech.Tts;
-using Android.Views;
-using Android.Widget;
 using elmar.droid.Common;
+using elmar.droid.Database;
 using elmar.droid.Settings;
 using elmar.droid.Voice;
-using TinyIoC;
 
 namespace elmar.droid
 {
@@ -29,7 +20,8 @@ namespace elmar.droid
             base.OnCreate();
 
             Container.Register(ApplicationContext);
-            
+
+            Container.Register<Connection>().AsSingleton();
             Container.Register<VoiceOutput>().AsSingleton();
             
             Container.Register<TTSChecker>().AsSingleton();
@@ -37,7 +29,18 @@ namespace elmar.droid
             Container.Register<SettingsManager>().AsSingleton();
             Container.Register<EventManager>().AsSingleton();
 
+
+            InitDatabase();
+
             RegisterEvents();
+
+
+        }
+
+        private void InitDatabase()
+        {
+            var connection = Container.Resolve<Connection>();
+            connection.CreateOrUpdateSchema();
         }
 
         private void RegisterEvents()

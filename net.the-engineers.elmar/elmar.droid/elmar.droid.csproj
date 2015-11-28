@@ -80,6 +80,7 @@
     <Compile Include="Common\Language.cs" />
     <Compile Include="Common\LanguageManager.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Database\Connection.cs" />
     <Compile Include="EventsActivity.cs" />
     <Compile Include="Events\ShutdownReceiver.cs" />
     <Compile Include="Events\SMSReceiving.cs" />
@@ -199,9 +200,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\events.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="PluginsHelp\SettingsReadme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
