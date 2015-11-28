@@ -11,6 +11,7 @@ using Android.Speech;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using elmar.droid.Common;
 using elmar.droid.Settings;
 using TinyIoC;
 

@@ -1,4 +1,4 @@
-namespace elmar.droid
+namespace elmar.droid.Common
 {
     class Constants
     {

@@ -79,13 +79,13 @@
     <Compile Include="Common\EventManager.cs" />
     <Compile Include="Common\Language.cs" />
     <Compile Include="Common\LanguageManager.cs" />
-    <Compile Include="Constants.cs" />
+    <Compile Include="Common\Constants.cs" />
     <Compile Include="Database\Connection.cs" />
     <Compile Include="EventsActivity.cs" />
     <Compile Include="Events\ShutdownReceiver.cs" />
     <Compile Include="Events\SMSReceiving.cs" />
     <Compile Include="Events\StandardBroadcastReceiver.cs" />
-    <Compile Include="Logger.cs" />
+    <Compile Include="Common\Logger.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MediaButtonService.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
