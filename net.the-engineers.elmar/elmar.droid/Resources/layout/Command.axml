@@ -3,5 +3,36 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-  
+  <LinearLayout
+           android:id="@+id/inputCommandNameRow"
+           style="@style/SettingsEntry">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/CommandName"
+        style="@style/SettingsEntryText" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/inputCommandName"
+        style="@style/SettingsEntryValue" />
+  </LinearLayout>
+  <View
+            style="@style/Divider" />
+  <LinearLayout
+           android:id="@+id/inputCommandTextRow"
+           style="@style/SettingsEntry">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/CommandText"
+        style="@style/SettingsEntryText" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/inputCommandText"
+        style="@style/SettingsEntryValue" />
+  </LinearLayout>
+  <View
+            style="@style/Divider" />
 </LinearLayout>
