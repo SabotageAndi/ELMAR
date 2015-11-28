@@ -93,7 +93,7 @@
     <Compile Include="SettingsActivity.cs" />
     <Compile Include="Settings\SettingsManager.cs" />
     <Compile Include="SystemBootBroadcastReceiver.cs" />
-    <Compile Include="TinyIoC.cs" />
+    <Compile Include="Common\TinyIoC.cs" />
     <Compile Include="Voice\VoiceOutput.cs" />
     <Compile Include="Voice\TTSChecker.cs" />
     <Compile Include="Voice\VoiceRecognizer.cs" />
