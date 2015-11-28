@@ -28,6 +28,8 @@ namespace elmar.droid
             _eventManager = Container.Resolve<EventManager>();
 
             SetContentView(Resource.Layout.Events);
+            ActionBar.SetDisplayHomeAsUpEnabled(true);
+
 
             _events = FindViewById<ListView>(Resource.Id.event_list);
             _eventAdapter = new EventAdapter(this, _eventManager.GetRegisteredEvents(), OnEventChanged);
@@ -39,6 +41,15 @@ namespace elmar.droid
             _eventManager.Save(changedEvent);
         }
 
+        public override bool OnMenuItemSelected(int featureId, IMenuItem item)
+        {
+            if (item.ItemId == Android.Resource.Id.Home)
+            {
+                Finish();
+            }
+
+            return base.OnMenuItemSelected(featureId, item);
+        }
 
         private class EventAdapter : BaseAdapter<Event>
         {

@@ -22,7 +22,8 @@ namespace elmar.droid.Database
 
         public void CreateOrUpdateSchema()
         {
-            var table = Current.CreateTable<Event>(CreateFlags.None);
+            Current.CreateTable<Event>(CreateFlags.None);
+            Current.CreateTable<Command>(CreateFlags.None);
         }
     }
 }
