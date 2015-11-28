@@ -9,7 +9,7 @@ using TinyIoC;
 
 namespace elmar.droid
 {
-    [Activity(Label = "elmar.droid", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "E.L.M.A.R.", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
         private ImageButton _startVoiceButton;
@@ -20,7 +20,6 @@ namespace elmar.droid
         {
             base.OnCreate(bundle);
 
-            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
             ActionBar.Hide();
 
