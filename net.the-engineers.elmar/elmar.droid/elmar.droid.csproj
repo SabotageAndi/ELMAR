@@ -43,6 +43,14 @@
   <ItemGroup>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
+    <Reference Include="Refractored.Xam.Settings, Version=1.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xam.Plugins.Settings.1.5.2\lib\MonoAndroid10\Refractored.Xam.Settings.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Refractored.Xam.Settings.Abstractions, Version=1.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xam.Plugins.Settings.1.5.2\lib\MonoAndroid10\Refractored.Xam.Settings.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -174,6 +182,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\events.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PluginsHelp\SettingsReadme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

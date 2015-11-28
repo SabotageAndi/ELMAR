@@ -4,23 +4,24 @@ using System.Linq;
 using System.Text;
 
 using Android.App;
-using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using elmar.droid.Common;
+using Refractored.Xam.Settings;
+using Refractored.Xam.Settings.Abstractions;
 
 namespace elmar.droid.Settings
 {
     class SettingsManager
     {
-        private readonly Context _context;
         private readonly LanguageManager _languageManager;
 
-        public SettingsManager(Context context, LanguageManager languageManager)
+        private ISettings Settings => CrossSettings.Current;
+
+        public SettingsManager(LanguageManager languageManager)
         {
-            _context = context;
             _languageManager = languageManager;
         }
 
@@ -28,7 +29,7 @@ namespace elmar.droid.Settings
         {
             get
             {
-                var languageCode = GetSharedPreferences().GetString("inputLanguage", Language.Default.ISOCode);
+                var languageCode = Settings.GetValueOrDefault("inputLanguage", Language.Default.ISOCode);
                 var language = _languageManager.GetByIso(languageCode);
 
                 return language;
@@ -37,18 +38,14 @@ namespace elmar.droid.Settings
 
         public void SetInputLanguage(Language language)
         {
-            var sharedPreferenceManager = GetSharedPreferences();
-            var editor = sharedPreferenceManager.Edit();
-
-            editor.PutString("inputLanguage", language.ISOCode);
-            editor.Commit();
+            Settings.AddOrUpdateValue("inputLanguage", language.ISOCode);
         }
 
         public Language OutputLanguage
         {
             get
             {
-                var languageCode = GetSharedPreferences().GetString("outputLanguage", Language.Default.ISOCode);
+                var languageCode = Settings.GetValueOrDefault("outputLanguage", Language.Default.ISOCode);
                 var language = _languageManager.GetByIso(languageCode);
 
                 return language;
@@ -57,16 +54,7 @@ namespace elmar.droid.Settings
 
         public void SetOutputLanguage(Language language)
         {
-            var sharedPreferenceManager = GetSharedPreferences();
-            var editor = sharedPreferenceManager.Edit();
-
-            editor.PutString("outputLanguage", language.ISOCode);
-            editor.Commit();
-        }
-
-        private ISharedPreferences GetSharedPreferences()
-        {
-            return _context.GetSharedPreferences("net.the-engineers.elmar.droid", FileCreationMode.Private);
+            Settings.AddOrUpdateValue("outputLanguage", language.ISOCode);
         }
     }
 }
