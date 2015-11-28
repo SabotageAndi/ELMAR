@@ -26,6 +26,8 @@ namespace elmar.droid
 		
 		public static void UpdateIdValues()
 		{
+			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.ApplicationName = global::elmar.droid.Resource.String.ApplicationName;
+			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.Hello = global::elmar.droid.Resource.String.Hello;
 		}
 		
 		public partial class Attribute
@@ -149,29 +151,32 @@ namespace elmar.droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040006
-			public const int ApplicationName = 2130968582;
-			
-			// aapt resource value: 0x7f040005
-			public const int Commands = 2130968581;
-			
-			// aapt resource value: 0x7f040004
-			public const int Events = 2130968580;
-			
-			// aapt resource value: 0x7f040002
-			public const int InputLanguage = 2130968578;
+			// aapt resource value: 0x7f040001
+			public const int ApplicationName = 2130968577;
 			
 			// aapt resource value: 0x7f040007
-			public const int NotRecognized = 2130968583;
+			public const int Commands = 2130968583;
 			
-			// aapt resource value: 0x7f040003
-			public const int OutputLanguage = 2130968579;
-			
-			// aapt resource value: 0x7f040001
-			public const int SMSReceivingEvent = 2130968577;
+			// aapt resource value: 0x7f040006
+			public const int Events = 2130968582;
 			
 			// aapt resource value: 0x7f040000
-			public const int ShutdownEvent = 2130968576;
+			public const int Hello = 2130968576;
+			
+			// aapt resource value: 0x7f040004
+			public const int InputLanguage = 2130968580;
+			
+			// aapt resource value: 0x7f040008
+			public const int NotRecognized = 2130968584;
+			
+			// aapt resource value: 0x7f040005
+			public const int OutputLanguage = 2130968581;
+			
+			// aapt resource value: 0x7f040003
+			public const int SMSReceivingEvent = 2130968579;
+			
+			// aapt resource value: 0x7f040002
+			public const int ShutdownEvent = 2130968578;
 			
 			static String()
 			{
