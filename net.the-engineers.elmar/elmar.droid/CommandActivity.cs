@@ -26,6 +26,8 @@ namespace elmar.droid
         private TextView _commandTextInput;
 
         private Command _command;
+        private const int SaveId = 1;
+        private const int DeleteId = 2;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -99,22 +101,37 @@ namespace elmar.droid
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            var menuItem = menu.Add(0, 1, 0, Resource.String.SaveCommand);
-            menuItem.SetIcon(Resource.Drawable.ic_done_white_48dp);
-            menuItem.SetShowAsAction(ShowAsAction.Always);
+            
+            var saveMenu = menu.Add(0, SaveId, 0, Resource.String.SaveCommand);
+            saveMenu.SetIcon(Resource.Drawable.ic_done_white_48dp);
+            saveMenu.SetShowAsAction(ShowAsAction.Always);
+
+            var deleteMenu = menu.Add(0, DeleteId, 1, Resource.String.DeleteCommand);
+            deleteMenu.SetIcon(Resource.Drawable.ic_delete_white_48dp);
+            deleteMenu.SetShowAsAction(ShowAsAction.Always);
 
             return base.OnCreateOptionsMenu(menu);
         }
 
         public override bool OnMenuItemSelected(int featureId, IMenuItem item)
         {
-            if (item.ItemId != Android.Resource.Id.Home)
+            if (item.ItemId == SaveId)
             {
                 SaveCommand();
             }
 
+            if (item.ItemId == DeleteId)
+            {
+                DeleteCommand();
+            }
+
             Finish();
             return base.OnMenuItemSelected(featureId, item);
+        }
+
+        private void DeleteCommand()
+        {
+            _commandManager.DeleteCommand(_command);
         }
 
         private void SaveCommand()

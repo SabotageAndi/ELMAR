@@ -34,5 +34,10 @@ namespace elmar.droid.Common
         {
             return _connection.Current.Table<Command>().Where(c => c.Id == commandId).SingleOrDefault();
         }
+
+        public void DeleteCommand(Command command)
+        {
+            _connection.Current.Delete(command);
+        }
     }
 }

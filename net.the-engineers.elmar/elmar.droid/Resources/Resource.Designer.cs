@@ -53,22 +53,25 @@ namespace elmar.droid
 			public const int ic_add_circle_white_48dp = 2130837505;
 			
 			// aapt resource value: 0x7f020002
-			public const int ic_done_white_48dp = 2130837506;
+			public const int ic_delete_white_48dp = 2130837506;
 			
 			// aapt resource value: 0x7f020003
-			public const int ic_keyboard_voice_white_48dp = 2130837507;
+			public const int ic_done_white_48dp = 2130837507;
 			
 			// aapt resource value: 0x7f020004
-			public const int ic_settings_applications_white_24dp = 2130837508;
+			public const int ic_keyboard_voice_white_48dp = 2130837508;
 			
 			// aapt resource value: 0x7f020005
-			public const int ic_settings_applications_white_36dp = 2130837509;
+			public const int ic_settings_applications_white_24dp = 2130837509;
 			
 			// aapt resource value: 0x7f020006
-			public const int ic_settings_applications_white_48dp = 2130837510;
+			public const int ic_settings_applications_white_36dp = 2130837510;
 			
 			// aapt resource value: 0x7f020007
-			public const int Icon = 2130837511;
+			public const int ic_settings_applications_white_48dp = 2130837511;
+			
+			// aapt resource value: 0x7f020008
+			public const int Icon = 2130837512;
 			
 			static Drawable()
 			{
@@ -196,38 +199,41 @@ namespace elmar.droid
 			// aapt resource value: 0x7f040001
 			public const int ApplicationName = 2130968577;
 			
-			// aapt resource value: 0x7f040003
-			public const int CommandName = 2130968579;
-			
 			// aapt resource value: 0x7f040004
-			public const int CommandText = 2130968580;
+			public const int CommandName = 2130968580;
+			
+			// aapt resource value: 0x7f040005
+			public const int CommandText = 2130968581;
+			
+			// aapt resource value: 0x7f04000b
+			public const int Commands = 2130968587;
+			
+			// aapt resource value: 0x7f040003
+			public const int DeleteCommand = 2130968579;
 			
 			// aapt resource value: 0x7f04000a
-			public const int Commands = 2130968586;
-			
-			// aapt resource value: 0x7f040009
-			public const int Events = 2130968585;
+			public const int Events = 2130968586;
 			
 			// aapt resource value: 0x7f040000
 			public const int Hello = 2130968576;
 			
-			// aapt resource value: 0x7f040007
-			public const int InputLanguage = 2130968583;
-			
-			// aapt resource value: 0x7f04000b
-			public const int NotRecognized = 2130968587;
-			
 			// aapt resource value: 0x7f040008
-			public const int OutputLanguage = 2130968584;
+			public const int InputLanguage = 2130968584;
 			
-			// aapt resource value: 0x7f040006
-			public const int SMSReceivingEvent = 2130968582;
+			// aapt resource value: 0x7f04000c
+			public const int NotRecognized = 2130968588;
+			
+			// aapt resource value: 0x7f040009
+			public const int OutputLanguage = 2130968585;
+			
+			// aapt resource value: 0x7f040007
+			public const int SMSReceivingEvent = 2130968583;
 			
 			// aapt resource value: 0x7f040002
 			public const int SaveCommand = 2130968578;
 			
-			// aapt resource value: 0x7f040005
-			public const int ShutdownEvent = 2130968581;
+			// aapt resource value: 0x7f040006
+			public const int ShutdownEvent = 2130968582;
 			
 			static String()
 			{
