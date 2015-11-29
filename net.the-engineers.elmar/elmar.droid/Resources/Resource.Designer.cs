@@ -86,35 +86,38 @@ namespace elmar.droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060007
-			public const int add_command = 2131099655;
-			
-			// aapt resource value: 0x7f060004
-			public const int commandName = 2131099652;
+			// aapt resource value: 0x7f06000a
+			public const int add_command = 2131099658;
 			
 			// aapt resource value: 0x7f060005
-			public const int commandText = 2131099653;
+			public const int add_step = 2131099653;
 			
 			// aapt resource value: 0x7f060006
-			public const int command_list = 2131099654;
+			public const int commandName = 2131099654;
 			
-			// aapt resource value: 0x7f060013
-			public const int commandsRow = 2131099667;
-			
-			// aapt resource value: 0x7f060008
-			public const int eventActivated = 2131099656;
+			// aapt resource value: 0x7f060007
+			public const int commandText = 2131099655;
 			
 			// aapt resource value: 0x7f060009
-			public const int eventName = 2131099657;
+			public const int command_list = 2131099657;
 			
-			// aapt resource value: 0x7f06000a
-			public const int eventOutput = 2131099658;
+			// aapt resource value: 0x7f060016
+			public const int commandsRow = 2131099670;
 			
 			// aapt resource value: 0x7f06000b
-			public const int event_list = 2131099659;
+			public const int eventActivated = 2131099659;
 			
-			// aapt resource value: 0x7f060012
-			public const int eventsRow = 2131099666;
+			// aapt resource value: 0x7f06000c
+			public const int eventName = 2131099660;
+			
+			// aapt resource value: 0x7f06000d
+			public const int eventOutput = 2131099661;
+			
+			// aapt resource value: 0x7f06000e
+			public const int event_list = 2131099662;
+			
+			// aapt resource value: 0x7f060015
+			public const int eventsRow = 2131099669;
 			
 			// aapt resource value: 0x7f060001
 			public const int inputCommandName = 2131099649;
@@ -128,23 +131,29 @@ namespace elmar.droid
 			// aapt resource value: 0x7f060002
 			public const int inputCommandTextRow = 2131099650;
 			
-			// aapt resource value: 0x7f06000f
-			public const int inputLanguage = 2131099663;
-			
-			// aapt resource value: 0x7f06000e
-			public const int inputLanguageRow = 2131099662;
+			// aapt resource value: 0x7f060012
+			public const int inputLanguage = 2131099666;
 			
 			// aapt resource value: 0x7f060011
-			public const int outputLanguage = 2131099665;
+			public const int inputLanguageRow = 2131099665;
+			
+			// aapt resource value: 0x7f060014
+			public const int outputLanguage = 2131099668;
+			
+			// aapt resource value: 0x7f060013
+			public const int outputLanguageRow = 2131099667;
 			
 			// aapt resource value: 0x7f060010
-			public const int outputLanguageRow = 2131099664;
+			public const int preferences = 2131099664;
 			
-			// aapt resource value: 0x7f06000d
-			public const int preferences = 2131099661;
+			// aapt resource value: 0x7f06000f
+			public const int startVoice = 2131099663;
 			
-			// aapt resource value: 0x7f06000c
-			public const int startVoice = 2131099660;
+			// aapt resource value: 0x7f060004
+			public const int stepList = 2131099652;
+			
+			// aapt resource value: 0x7f060008
+			public const int stepName = 2131099656;
 			
 			static Id()
 			{
@@ -166,22 +175,25 @@ namespace elmar.droid
 			public const int command_item = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int Commands = 2130903042;
+			public const int command_step_item = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int event_item = 2130903043;
+			public const int Commands = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int Events = 2130903044;
+			public const int event_item = 2130903044;
 			
 			// aapt resource value: 0x7f030005
-			public const int logo = 2130903045;
+			public const int Events = 2130903045;
 			
 			// aapt resource value: 0x7f030006
-			public const int Main = 2130903046;
+			public const int logo = 2130903046;
 			
 			// aapt resource value: 0x7f030007
-			public const int Settings = 2130903047;
+			public const int Main = 2130903047;
+			
+			// aapt resource value: 0x7f030008
+			public const int Settings = 2130903048;
 			
 			static Layout()
 			{
@@ -202,38 +214,41 @@ namespace elmar.droid
 			// aapt resource value: 0x7f040004
 			public const int CommandName = 2130968580;
 			
+			// aapt resource value: 0x7f040006
+			public const int CommandSteps = 2130968582;
+			
 			// aapt resource value: 0x7f040005
 			public const int CommandText = 2130968581;
 			
-			// aapt resource value: 0x7f04000b
-			public const int Commands = 2130968587;
+			// aapt resource value: 0x7f04000c
+			public const int Commands = 2130968588;
 			
 			// aapt resource value: 0x7f040003
 			public const int DeleteCommand = 2130968579;
 			
-			// aapt resource value: 0x7f04000a
-			public const int Events = 2130968586;
+			// aapt resource value: 0x7f04000b
+			public const int Events = 2130968587;
 			
 			// aapt resource value: 0x7f040000
 			public const int Hello = 2130968576;
 			
-			// aapt resource value: 0x7f040008
-			public const int InputLanguage = 2130968584;
-			
-			// aapt resource value: 0x7f04000c
-			public const int NotRecognized = 2130968588;
-			
 			// aapt resource value: 0x7f040009
-			public const int OutputLanguage = 2130968585;
+			public const int InputLanguage = 2130968585;
 			
-			// aapt resource value: 0x7f040007
-			public const int SMSReceivingEvent = 2130968583;
+			// aapt resource value: 0x7f04000d
+			public const int NotRecognized = 2130968589;
+			
+			// aapt resource value: 0x7f04000a
+			public const int OutputLanguage = 2130968586;
+			
+			// aapt resource value: 0x7f040008
+			public const int SMSReceivingEvent = 2130968584;
 			
 			// aapt resource value: 0x7f040002
 			public const int SaveCommand = 2130968578;
 			
-			// aapt resource value: 0x7f040006
-			public const int ShutdownEvent = 2130968582;
+			// aapt resource value: 0x7f040007
+			public const int ShutdownEvent = 2130968583;
 			
 			static String()
 			{

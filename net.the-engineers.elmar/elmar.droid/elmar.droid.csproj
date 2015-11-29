@@ -78,6 +78,7 @@
     <Compile Include="CommandsActivity.cs" />
     <Compile Include="Common\Command.cs" />
     <Compile Include="Common\CommandManager.cs" />
+    <Compile Include="Common\CommandStep.cs" />
     <Compile Include="Common\Container.cs" />
     <Compile Include="Common\Event.cs" />
     <Compile Include="Common\EventManager.cs" />
@@ -128,6 +129,9 @@
     </AndroidResource>
     <AndroidResource Include="Resources\layout\Command.axml">
       <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\command_step_item.axml">
+      <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>

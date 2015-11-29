@@ -13,16 +13,22 @@ using SQLite.Net.Attributes;
 
 namespace elmar.droid.Common
 {
-    class Command
+    enum CommandStepTypeEnum
+    {
+        Talk
+    }
+
+    class CommandStepType
+    {
+        public string Name { get; set; }
+        public CommandStepTypeEnum Type { get; set; }
+    }
+
+    class CommandStep
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-
-        public string Name { get; set; }
-
-        public string CommandText { get; set; }
-
-        [Ignore]
-        public List<CommandStep> Steps { get; set; }
+        public CommandStepTypeEnum Type { get; set; }
+        public int CommandId { get; set; }
     }
 }

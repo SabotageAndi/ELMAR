@@ -25,6 +25,10 @@ namespace elmar.droid
         private TextView _commandNameInput;
         private TextView _commandTextInput;
 
+        private ListView _stepList;
+        private ImageButton _addStepButton;
+        private StepAdapter _stepAdapter;
+
         private Command _command;
         private const int SaveId = 1;
         private const int DeleteId = 2;
@@ -38,10 +42,15 @@ namespace elmar.droid
 
             ActionBar.SetDisplayHomeAsUpEnabled(true);
 
+            _stepAdapter = new StepAdapter(this, _commandManager);
+
             _commandName = FindViewById<LinearLayout>(Resource.Id.inputCommandNameRow);
             _commandText = FindViewById<LinearLayout>(Resource.Id.inputCommandTextRow);
             _commandNameInput = FindViewById<TextView>(Resource.Id.inputCommandName);
             _commandTextInput = FindViewById<TextView>(Resource.Id.inputCommandText);
+            _stepList = FindViewById<ListView>(Resource.Id.stepList);
+            _stepList.Adapter = _stepAdapter;
+            _addStepButton = FindViewById<ImageButton>(Resource.Id.add_step);
 
             var commandId = Intent.GetIntExtra("commandId", -1);
 
@@ -59,6 +68,38 @@ namespace elmar.droid
 
             _commandName.Click += CommandNameClick;
             _commandText.Click += CommandTextOnClick;
+            _addStepButton.Click += AddStepButtonOnClick;
+        }
+
+        protected override void OnResume()
+        {
+            UpdateSteps();
+            base.OnResume();
+        }
+
+        private void UpdateSteps()
+        {
+            _stepAdapter.Clear();
+        }
+
+        private void AddStepButtonOnClick(object sender, EventArgs eventArgs)
+        {
+            var availableCommandStepTypes = _commandManager.GetAvailableCommandStepTypes();
+            var commandStepTypes = availableCommandStepTypes.Select(i => i.Name).ToArray();
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                .SetTitle(Resource.String.InputLanguage)
+                .SetItems(commandStepTypes, delegate (object o, DialogClickEventArgs args)
+                {
+                    var stepType = availableCommandStepTypes[args.Which];
+
+                    var commandStep = _commandManager.CreateStep(_command, stepType);
+
+                    _stepAdapter.Add(commandStep);
+                });
+
+            var alertDialog = builder.Create();
+            alertDialog.Show();
         }
 
         private void UpdateCommandText(string commandText)
@@ -137,6 +178,57 @@ namespace elmar.droid
         private void SaveCommand()
         {
             _commandManager.Save(_command);
+        }
+
+        class StepAdapter : BaseAdapter<CommandStep>
+        {
+            private readonly Context _context;
+            private readonly CommandManager _commandManager;
+            private readonly List<CommandStep> _steps = new List<CommandStep>(); 
+            public StepAdapter(Context context, CommandManager commandManager)
+            {
+                _context = context;
+                _commandManager = commandManager;
+            }
+
+            public override long GetItemId(int position)
+            {
+                return position;
+            }
+
+            public override View GetView(int position, View convertView, ViewGroup parent)
+            {
+                if (convertView == null)
+                {
+                    var layoutInflater = LayoutInflater.FromContext(_context);
+                    convertView = layoutInflater.Inflate(Resource.Layout.command_step_item, null);
+                }
+
+                var step = this[position];
+
+                var stepName = convertView.FindViewById<TextView>(Resource.Id.stepName);
+
+                var stepType = _commandManager.GetCommandStepType(step.Type);
+                stepName.Text = stepType.Name;
+
+                return convertView;
+            }
+
+            public override int Count => _steps.Count;
+
+            public override CommandStep this[int position] => _steps[position];
+
+            public void Clear()
+            {
+                _steps.Clear();
+                NotifyDataSetChanged();
+            }
+
+            public void Add(CommandStep commandStep)
+            {
+                _steps.Add(commandStep);
+                NotifyDataSetChanged();
+            }
         }
     }
 }
