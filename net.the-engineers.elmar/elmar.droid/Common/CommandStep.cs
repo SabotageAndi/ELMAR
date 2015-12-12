@@ -30,5 +30,7 @@ namespace elmar.droid.Common
         public int Id { get; set; }
         public CommandStepTypeEnum Type { get; set; }
         public int CommandId { get; set; }
+
+        public string Parameter { get; set; }  
     }
 }

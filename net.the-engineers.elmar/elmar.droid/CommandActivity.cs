@@ -70,6 +70,21 @@ namespace elmar.droid
             _commandName.Click += CommandNameClick;
             _commandText.Click += CommandTextOnClick;
             _addStepButton.Click += AddStepButtonOnClick;
+            _stepList.ItemClick += OnStepItemClick;
+        }
+
+        private void OnStepItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            var step = _stepAdapter[e.Position];
+
+            switch (step.Type)
+            {
+                case CommandStepTypeEnum.Talk:
+                    OpenEditDialog(step.Parameter, Resource.String.OutputLanguage, (text) => { step.Parameter = text; });
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         protected override void OnResume()
@@ -83,17 +98,15 @@ namespace elmar.droid
             var availableCommandStepTypes = _commandManager.GetAvailableCommandStepTypes();
             var commandStepTypes = availableCommandStepTypes.Select(i => i.Name).ToArray();
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(this)
-                .SetTitle(Resource.String.InputLanguage)
-                .SetItems(commandStepTypes, delegate (object o, DialogClickEventArgs args)
-                {
-                    var stepType = availableCommandStepTypes[args.Which];
+            AlertDialog.Builder builder = new AlertDialog.Builder(this).SetTitle(Resource.String.InputLanguage).SetItems(commandStepTypes, delegate(object o, DialogClickEventArgs args)
+            {
+                var stepType = availableCommandStepTypes[args.Which];
 
-                    var commandStep = _commandManager.CreateStep(_command, stepType);
+                var commandStep = _commandManager.CreateStep(_command, stepType);
 
-                    _command.Steps.Add(commandStep);
-                    UpdateSteps(_command);
-                });
+                _command.Steps.Add(commandStep);
+                UpdateSteps(_command);
+            });
 
             var alertDialog = builder.Create();
             alertDialog.Show();
@@ -117,12 +130,20 @@ namespace elmar.droid
 
         private void CommandTextOnClick(object sender, EventArgs eventArgs)
         {
-            OpenEditDialog(_command.CommandText, Resource.String.CommandText, (str) => { _command.CommandText = str; UpdateCommandText(str);  });
+            OpenEditDialog(_command.CommandText, Resource.String.CommandText, (str) =>
+            {
+                _command.CommandText = str;
+                UpdateCommandText(str);
+            });
         }
 
         private void CommandNameClick(object sender, EventArgs e)
         {
-            OpenEditDialog(_command.Name, Resource.String.CommandName, (str) => { _command.Name = str; UpdateCommandName(str); });
+            OpenEditDialog(_command.Name, Resource.String.CommandName, (str) =>
+            {
+                _command.Name = str;
+                UpdateCommandName(str);
+            });
         }
 
         private void OpenEditDialog(string text, int titleId, Action<string> onOk)
@@ -134,18 +155,14 @@ namespace elmar.droid
             builder.SetTitle(titleId);
             builder.SetView(editText);
 
-            builder.SetPositiveButton(Android.Resource.String.Ok, delegate (object o, DialogClickEventArgs args)
-            {
-                onOk(editText.Text);
-            });
-            builder.SetNegativeButton(Android.Resource.String.Cancel, delegate (object o, DialogClickEventArgs args) { });
+            builder.SetPositiveButton(Android.Resource.String.Ok, delegate(object o, DialogClickEventArgs args) { onOk(editText.Text); });
+            builder.SetNegativeButton(Android.Resource.String.Cancel, delegate(object o, DialogClickEventArgs args) { });
 
             builder.Show();
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            
             var saveMenu = menu.Add(0, SaveId, 0, Resource.String.SaveCommand);
             saveMenu.SetIcon(Resource.Drawable.ic_done_white_48dp);
             saveMenu.SetShowAsAction(ShowAsAction.Always);
@@ -187,7 +204,8 @@ namespace elmar.droid
         {
             private readonly Context _context;
             private readonly CommandManager _commandManager;
-            private readonly List<CommandStep> _steps = new List<CommandStep>(); 
+            private readonly List<CommandStep> _steps = new List<CommandStep>();
+
             public StepAdapter(Context context, CommandManager commandManager)
             {
                 _context = context;

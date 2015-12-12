@@ -5,4 +5,5 @@
   <string name="CommandName">Name</string>
   <string name="CommandText">Command</string>
   <string name="CommandSteps">Steps</string>
+  <string name="OutputText">Text to talk</string>
 </resources>
