@@ -220,35 +220,38 @@ namespace elmar.droid
 			// aapt resource value: 0x7f040005
 			public const int CommandText = 2130968581;
 			
-			// aapt resource value: 0x7f04000c
-			public const int Commands = 2130968588;
+			// aapt resource value: 0x7f04000d
+			public const int Commands = 2130968589;
 			
 			// aapt resource value: 0x7f040003
 			public const int DeleteCommand = 2130968579;
 			
-			// aapt resource value: 0x7f04000b
-			public const int Events = 2130968587;
+			// aapt resource value: 0x7f04000c
+			public const int Events = 2130968588;
 			
 			// aapt resource value: 0x7f040000
 			public const int Hello = 2130968576;
 			
-			// aapt resource value: 0x7f040009
-			public const int InputLanguage = 2130968585;
-			
-			// aapt resource value: 0x7f04000d
-			public const int NotRecognized = 2130968589;
-			
 			// aapt resource value: 0x7f04000a
-			public const int OutputLanguage = 2130968586;
+			public const int InputLanguage = 2130968586;
 			
-			// aapt resource value: 0x7f040008
-			public const int SMSReceivingEvent = 2130968584;
+			// aapt resource value: 0x7f04000e
+			public const int NotRecognized = 2130968590;
+			
+			// aapt resource value: 0x7f04000b
+			public const int OutputLanguage = 2130968587;
+			
+			// aapt resource value: 0x7f040007
+			public const int OutputText = 2130968583;
+			
+			// aapt resource value: 0x7f040009
+			public const int SMSReceivingEvent = 2130968585;
 			
 			// aapt resource value: 0x7f040002
 			public const int SaveCommand = 2130968578;
 			
-			// aapt resource value: 0x7f040007
-			public const int ShutdownEvent = 2130968583;
+			// aapt resource value: 0x7f040008
+			public const int ShutdownEvent = 2130968584;
 			
 			static String()
 			{
