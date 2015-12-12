@@ -1,67 +1,20 @@
 using System.Collections.Generic;
 using System.Linq;
-using elmar.droid.Database;
+using elmar.droid.Common.Commands;
 
 namespace elmar.droid.Common
 {
     class CommandManager
     {
-        private readonly Connection _connection;
+        private readonly CommandRepository _commandRepository;
         private readonly  List<CommandStepType> _commandStepTypes = new List<CommandStepType>(); 
 
-        public CommandManager(Connection connection)
+        public CommandManager(TalkCommandStepAction talkCommandStepAction, CommandRepository commandRepository)
         {
-            _connection = connection;
-
-            _commandStepTypes.Add(new CommandStepType() {Name = "Talk", Type = CommandStepTypeEnum.Talk});
+            _commandRepository = commandRepository;
+            _commandStepTypes.Add(new CommandStepType() {Name = "Talk", Type = CommandStepTypeEnum.Talk, CommandStepAction = talkCommandStepAction});
         }
 
-        public void Save(Command command)
-        {
-            if (command.Id == 0)
-            {
-                _connection.Current.Insert(command);
-            }
-            else
-            {
-                _connection.Current.Update(command);
-            }
-
-
-            foreach (var step in command.Steps)
-            {
-                if (step.Id == 0)
-                {
-                    _connection.Current.Insert(step);
-                }
-                else
-                {
-                    _connection.Current.Update(step);
-                }
-            }
-        }
-
-        public List<Command> GetCommands()
-        {
-            return _connection.Current.Table<Command>().ToList();
-        }
-
-        public Command GetCommand(int commandId)
-        {
-            var command = _connection.Current.Table<Command>().Where(c => c.Id == commandId).SingleOrDefault();
-
-            if (command != null)
-            {
-                command.Steps = _connection.Current.Table<CommandStep>().Where(cs => cs.CommandId == commandId).ToList();
-            }
-
-            return command;
-        }
-
-        public void DeleteCommand(Command command)
-        {
-            _connection.Current.Delete(command);
-        }
 
         public List<CommandStepType> GetAvailableCommandStepTypes()
         {
@@ -80,6 +33,36 @@ namespace elmar.droid.Common
         public CommandStepType GetCommandStepType(CommandStepTypeEnum commandStepTypeEnum)
         {
             return _commandStepTypes.Where(cst => cst.Type == commandStepTypeEnum).SingleOrDefault();
+        }
+
+
+        public bool FindAndExecuteCommand(string commandName)
+        {
+            var command = FindCommand(commandName);
+
+            if (command == null)
+                return false;
+
+            ExecuteCommand(command);
+
+            return true;
+        }
+
+        private void ExecuteCommand(Command command)
+        {
+            var steps = command.Steps.OrderBy(s => s.Order);
+
+            foreach (var step in steps)
+            {
+                var commandStepType = GetCommandStepType(step.Type);
+
+                commandStepType.CommandStepAction.Execute(step.Parameter);
+            }
+        }
+
+        private Command FindCommand(string commandName)
+        {
+            return _commandRepository.GetCommand(commandName);
         }
     }
 }

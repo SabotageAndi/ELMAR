@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using elmar.droid.Common.Commands;
 using SQLite.Net.Attributes;
 
 namespace elmar.droid.Common
@@ -22,6 +23,8 @@ namespace elmar.droid.Common
     {
         public string Name { get; set; }
         public CommandStepTypeEnum Type { get; set; }
+
+        public ICommandStepAction CommandStepAction { get; set; }
     }
 
     class CommandStep
@@ -31,6 +34,8 @@ namespace elmar.droid.Common
         public CommandStepTypeEnum Type { get; set; }
         public int CommandId { get; set; }
 
-        public string Parameter { get; set; }  
+        public string Parameter { get; set; }
+
+        public int Order { get; set; }
     }
 }

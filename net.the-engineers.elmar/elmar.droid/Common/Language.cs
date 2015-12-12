@@ -21,7 +21,8 @@ namespace elmar.droid.Common
 
         public static List<Language> All { get; } = new List<Language>() 
         {
-            new Language("en-US", "en", "English (USA)")
+            new Language("en-US", "en", "English (USA)"),
+            new Language("de-DE", "de", "Deutsch")
         };
 
         public static Language Default => All.First();

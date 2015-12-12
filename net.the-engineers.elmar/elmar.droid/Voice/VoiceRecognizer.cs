@@ -24,6 +24,7 @@ namespace elmar.droid
         private readonly VoiceOutput _voiceOutput;
 
         private readonly SettingsManager _settingsManager;
+        private CommandManager _commandManager;
 
         public VoiceRecognizer(Context context)
         {
@@ -31,6 +32,7 @@ namespace elmar.droid
 
             _voiceOutput = TinyIoCContainer.Current.Resolve<VoiceOutput>();
             _settingsManager = TinyIoCContainer.Current.Resolve<SettingsManager>();
+            _commandManager = TinyIoCContainer.Current.Resolve<CommandManager>();
 
             _speechRecognizer = SpeechRecognizer.CreateSpeechRecognizer(_context);
             _speechRecognizer.SetRecognitionListener(this);
@@ -87,21 +89,27 @@ namespace elmar.droid
             var recognisedTexts = results.GetStringArrayList(SpeechRecognizer.ResultsRecognition);
             var firstText = recognisedTexts.FirstOrDefault();
 
-            string messageText;
+            var notRecognizedText = _context.Resources.GetString(Resource.String.NotRecognized);
+
+            bool playNotRecognizedText = false;
 
             if (String.IsNullOrWhiteSpace(firstText))
             {
-                var text = _context.Resources.GetString(Resource.String.NotRecognized);
-                messageText = text;
+                playNotRecognizedText = true;
             }
             else
             {
-                messageText = firstText;
+                var result = _commandManager.FindAndExecuteCommand(firstText);
+
+                if (!result)
+                    playNotRecognizedText = true;
             }
-            Toast.MakeText(_context, messageText, ToastLength.Short).Show();
 
-            _voiceOutput.Speek(messageText);
-
+            if (playNotRecognizedText)
+            {
+                Toast.MakeText(_context, notRecognizedText, ToastLength.Short).Show();
+                _voiceOutput.Speek(notRecognizedText);
+            }
         }
 
         public void OnRmsChanged(float rmsdB)

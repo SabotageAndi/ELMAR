@@ -78,7 +78,10 @@
     <Compile Include="CommandsActivity.cs" />
     <Compile Include="Common\Command.cs" />
     <Compile Include="Common\CommandManager.cs" />
+    <Compile Include="Common\CommandRepository.cs" />
     <Compile Include="Common\CommandStep.cs" />
+    <Compile Include="Common\Commands\ICommandStepAction.cs" />
+    <Compile Include="Common\Commands\TalkCommandStepAction.cs" />
     <Compile Include="Common\Container.cs" />
     <Compile Include="Common\Event.cs" />
     <Compile Include="Common\EventManager.cs" />

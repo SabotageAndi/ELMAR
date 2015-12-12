@@ -21,6 +21,7 @@ namespace elmar.droid
         private ListView _commandList;
         private CommandAdapter _commandAdapter;
         private CommandManager _commandManager;
+        private CommandRepository _commandRepository;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -30,6 +31,7 @@ namespace elmar.droid
             ActionBar.SetDisplayHomeAsUpEnabled(true);
 
             _commandManager = TinyIoCContainer.Current.Resolve<CommandManager>();
+            _commandRepository = TinyIoCContainer.Current.Resolve<CommandRepository>();
 
             _addCommandButton = FindViewById<ImageButton>(Resource.Id.add_command);
             _addCommandButton.Click += AddCommandButtonOnClick;
@@ -64,7 +66,7 @@ namespace elmar.droid
         {
             base.OnResume();
 
-            var commands = _commandManager.GetCommands();
+            var commands = _commandRepository.GetCommands();
 
             _commandAdapter.Update(commands);
         }

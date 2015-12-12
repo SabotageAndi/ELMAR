@@ -30,6 +30,7 @@ namespace elmar.droid
         private StepAdapter _stepAdapter;
 
         private Command _command;
+        private CommandRepository _commandRepository;
         private const int SaveId = 1;
         private const int DeleteId = 2;
 
@@ -39,6 +40,7 @@ namespace elmar.droid
             SetContentView(Resource.Layout.Command);
 
             _commandManager = TinyIoCContainer.Current.Resolve<CommandManager>();
+            _commandRepository = TinyIoCContainer.Current.Resolve<CommandRepository>();
 
             ActionBar.SetDisplayHomeAsUpEnabled(true);
 
@@ -60,7 +62,7 @@ namespace elmar.droid
             }
             else
             {
-                _command = _commandManager.GetCommand(commandId);
+                _command = _commandRepository.GetCommand(commandId);
             }
 
             UpdateCommandName(_command.Name);
@@ -192,12 +194,12 @@ namespace elmar.droid
 
         private void DeleteCommand()
         {
-            _commandManager.DeleteCommand(_command);
+            _commandRepository.DeleteCommand(_command);
         }
 
         private void SaveCommand()
         {
-            _commandManager.Save(_command);
+            _commandRepository.Save(_command);
         }
 
         class StepAdapter : BaseAdapter<CommandStep>
