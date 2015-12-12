@@ -65,6 +65,7 @@ namespace elmar.droid
 
             UpdateCommandName(_command.Name);
             UpdateCommandText(_command.CommandText);
+            UpdateSteps(_command);
 
             _commandName.Click += CommandNameClick;
             _commandText.Click += CommandTextOnClick;
@@ -73,13 +74,8 @@ namespace elmar.droid
 
         protected override void OnResume()
         {
-            UpdateSteps();
+            UpdateSteps(_command);
             base.OnResume();
-        }
-
-        private void UpdateSteps()
-        {
-            _stepAdapter.Clear();
         }
 
         private void AddStepButtonOnClick(object sender, EventArgs eventArgs)
@@ -95,7 +91,8 @@ namespace elmar.droid
 
                     var commandStep = _commandManager.CreateStep(_command, stepType);
 
-                    _stepAdapter.Add(commandStep);
+                    _command.Steps.Add(commandStep);
+                    UpdateSteps(_command);
                 });
 
             var alertDialog = builder.Create();
@@ -110,6 +107,12 @@ namespace elmar.droid
         private void UpdateCommandName(string name)
         {
             _commandNameInput.Text = name;
+        }
+
+        private void UpdateSteps(Command command)
+        {
+            _stepAdapter.Clear();
+            command.Steps.ForEach(_stepAdapter.Add);
         }
 
         private void CommandTextOnClick(object sender, EventArgs eventArgs)
