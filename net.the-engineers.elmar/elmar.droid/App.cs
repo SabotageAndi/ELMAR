@@ -45,23 +45,25 @@ namespace elmar.droid
             var commandRepository = Container.Resolve<CommandRepository>();
             var commandManager = Container.Resolve<CommandManager>();
 
-            AddCommand(commandRepository, commandManager, "Welcome", "hello", new List<Tuple<CommandStepTypeEnum, string>>()
+            AddCommand(commandRepository, commandManager, Resource.String.defaultWelcomeCommandName, Resource.String.defaultWelcomeCommand, new List<Tuple<CommandStepTypeEnum, string>>()
             {
                 new Tuple<CommandStepTypeEnum, string>(CommandStepTypeEnum.Talk, "hi"),
                 new Tuple<CommandStepTypeEnum, string>(CommandStepTypeEnum.Talk, "{CurrentUser.Name}")
             });
 
-            AddCommand(commandRepository, commandManager, "Time", "time", new List<Tuple<CommandStepTypeEnum, string>>()
+            AddCommand(commandRepository, commandManager, Resource.String.defaultTimeCommandName, Resource.String.defaultTimeCommand, new List<Tuple<CommandStepTypeEnum, string>>()
             {
                 new Tuple<CommandStepTypeEnum, string>(CommandStepTypeEnum.Time, "")
             });
         }
 
-        private void AddCommand(CommandRepository commandRepository, CommandManager commandManager, string commandName, string commandText, List<Tuple<CommandStepTypeEnum, string>> steps)
+        private void AddCommand(CommandRepository commandRepository, CommandManager commandManager, int commandNameId, int commandTextId, List<Tuple<CommandStepTypeEnum, string>> steps)
         {
+            string commandName = this.GetString(commandNameId);
             Command command = commandRepository.GetCommandByName(commandName);
             if (command == null)
             {
+                string commandText = GetString(commandTextId);
                 command = new Command() { Name = commandName, CommandText = commandText };
                 foreach (var step in steps)
                 {

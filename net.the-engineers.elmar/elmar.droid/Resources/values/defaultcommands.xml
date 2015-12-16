@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <string name="defaultWelcomeCommandName">Welcome</string>
+  <string name="defaultWelcomeCommand">hello</string>
+  <string name="defaultTimeCommandName">Time</string>
+  <string name="defaultTimeCommand">time</string>
+</resources>

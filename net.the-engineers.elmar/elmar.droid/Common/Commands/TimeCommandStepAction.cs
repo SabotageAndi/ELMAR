@@ -15,15 +15,19 @@ namespace elmar.droid.Common.Commands
     class TimeCommandStepAction : ICommandStepAction
     {
         private readonly VoiceOutput _voiceOutput;
+        private readonly Context _context;
 
-        public TimeCommandStepAction(VoiceOutput voiceOutput)
+        public TimeCommandStepAction(VoiceOutput voiceOutput, Context context)
         {
             _voiceOutput = voiceOutput;
+            _context = context;
         }
+
         public void Execute(string parameter)
         {
             var now = DateTime.Now;
-            var time = $"It is {now.Hour} {now.Minute}";
+            var outputText = _context.GetString(Resource.String.TimeCommandText);
+            var time = String.Format(outputText, now.Hour, now.Minute);
 
             _voiceOutput.Speek(time);
         }
