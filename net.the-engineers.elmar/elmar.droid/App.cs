@@ -55,6 +55,18 @@ namespace elmar.droid
             {
                 new Tuple<CommandStepTypeEnum, string>(CommandStepTypeEnum.Time, "")
             });
+
+            AddCommand(commandRepository, commandManager, Resource.String.defaultMuteCommandName, Resource.String.defaultMuteCommandName, new List<Tuple<CommandStepTypeEnum, string>>()
+            {
+                new Tuple<CommandStepTypeEnum, string>(CommandStepTypeEnum.Mute, ""),
+                new Tuple<CommandStepTypeEnum, string>(CommandStepTypeEnum.Talk, "muted")
+            } );
+
+            AddCommand(commandRepository, commandManager, Resource.String.defaultUnmuteCommandName, Resource.String.defaultUnmuteCommandName, new List<Tuple<CommandStepTypeEnum, string>>()
+            {
+                new Tuple<CommandStepTypeEnum, string>(CommandStepTypeEnum.Unmute, ""),
+                new Tuple<CommandStepTypeEnum, string>(CommandStepTypeEnum.Talk, "unmuted")
+            });
         }
 
         private void AddCommand(CommandRepository commandRepository, CommandManager commandManager, int commandNameId, int commandTextId, List<Tuple<CommandStepTypeEnum, string>> steps)

@@ -4,4 +4,8 @@
   <string name="defaultWelcomeCommand">hello</string>
   <string name="defaultTimeCommandName">Time</string>
   <string name="defaultTimeCommand">time</string>
+  <string name="defaultMuteCommandName">Mute</string>
+  <string name="defaultMuteCommand">Mute</string>
+  <string name="defaultUnmuteCommandName">Unmute</string>
+  <string name="defaultUnmuteCommand">Unmute</string>
 </resources>

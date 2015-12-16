@@ -5,6 +5,7 @@ using Android.Accounts;
 using Android.Content;
 using Android.Provider;
 using elmar.droid.Common.Commands;
+using TinyIoC;
 
 namespace elmar.droid.Common
 {
@@ -22,6 +23,8 @@ namespace elmar.droid.Common
             _commandRepository = commandRepository;
             _commandStepTypes.Add(new CommandStepType() { Name = "Talk", Type = CommandStepTypeEnum.Talk, CommandStepAction = talkCommandStepAction });
             _commandStepTypes.Add(new CommandStepType() { Name = "Time", Type = CommandStepTypeEnum.Time, CommandStepAction = timeCommandStepAction });
+            _commandStepTypes.Add(new CommandStepType() { Name = "Mute", Type = CommandStepTypeEnum.Mute, CommandStepAction = TinyIoCContainer.Current.Resolve<MuteCommandStepAction>() });
+            _commandStepTypes.Add(new CommandStepType() { Name = "Umute", Type = CommandStepTypeEnum.Unmute, CommandStepAction = TinyIoCContainer.Current.Resolve<UnmuteCommandStepAction>() });
 
             AddSystemParameters();
         }
