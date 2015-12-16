@@ -15,6 +15,11 @@ namespace elmar.droid.Common
 {
     class Command
     {
+        public Command()
+        {
+            Steps = new List<CommandStep>();
+        }
+
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 

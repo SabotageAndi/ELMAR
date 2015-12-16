@@ -2,6 +2,7 @@ using System;
 using Android.App;
 using Android.Runtime;
 using elmar.droid.Common;
+using elmar.droid.Common.Commands;
 using elmar.droid.Database;
 using elmar.droid.Settings;
 using elmar.droid.Voice;
@@ -33,8 +34,30 @@ namespace elmar.droid
             InitDatabase();
 
             RegisterEvents();
+            RegisterDefaultCommands();
 
+        }
 
+        private void RegisterDefaultCommands()
+        {
+            var commandRepository = Container.Resolve<CommandRepository>();
+            var commandManager = Container.Resolve<CommandManager>();
+
+            Command welcomeCommand = commandRepository.GetCommandByName("Welcome");
+            if (welcomeCommand == null)
+            {
+                welcomeCommand = new Command() {Name = "Welcome", CommandText = "hello"};
+                var welcomeStep1 = commandManager.CreateStep(welcomeCommand, commandManager.GetCommandStepType(CommandStepTypeEnum.Talk));
+                var welcomeStep2 = commandManager.CreateStep(welcomeCommand, commandManager.GetCommandStepType(CommandStepTypeEnum.Talk));
+
+                welcomeStep1.Parameter = "hi";
+                welcomeStep2.Parameter = "{CurrentUser.Firstname}";
+
+                welcomeCommand.Steps.Add(welcomeStep1);
+                welcomeCommand.Steps.Add(welcomeStep2);
+
+                commandRepository.Save(welcomeCommand);
+            }
         }
 
         private void InitDatabase()

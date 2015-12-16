@@ -36,6 +36,7 @@ namespace elmar.droid.Common
 
             foreach (var step in command.Steps)
             {
+                step.CommandId = command.Id;
                 if (step.Id == 0)
                 {
                     _connection.Current.Insert(step);
@@ -69,9 +70,14 @@ namespace elmar.droid.Common
             _connection.Current.Delete(command);
         }
 
-        public Command GetCommand(string commandName)
+        public Command GetCommandByName(string name)
         {
-            var command = _connection.Current.Table<Command>().ToList().Where(c => String.Compare(c.CommandText, commandName, StringComparison.InvariantCultureIgnoreCase) == 0).SingleOrDefault();
+            return _connection.Current.Table<Command>().Where(c => c.Name == name).SingleOrDefault();
+        }
+
+        public Command GetCommand(string commandText)
+        {
+            var command = _connection.Current.Table<Command>().ToList().Where(c => String.Compare(c.CommandText, commandText, StringComparison.InvariantCultureIgnoreCase) == 0).SingleOrDefault();
 
             if (command == null)
                 return null;
