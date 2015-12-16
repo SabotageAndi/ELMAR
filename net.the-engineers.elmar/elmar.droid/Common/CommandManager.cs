@@ -15,11 +15,12 @@ namespace elmar.droid.Common
 
         private Dictionary<string, string> _systemParameters = new Dictionary<string, string>(); 
 
-        public CommandManager(Context context, TalkCommandStepAction talkCommandStepAction, CommandRepository commandRepository)
+        public CommandManager(Context context, TalkCommandStepAction talkCommandStepAction, CommandRepository commandRepository, TimeCommandStepAction timeCommandStepAction)
         {
             _context = context;
             _commandRepository = commandRepository;
             _commandStepTypes.Add(new CommandStepType() {Name = "Talk", Type = CommandStepTypeEnum.Talk, CommandStepAction = talkCommandStepAction});
+            _commandStepTypes.Add(new CommandStepType() {Name = "Time", Type = CommandStepTypeEnum.Time, CommandStepAction = timeCommandStepAction });
 
             AddSystemParameters();
         }

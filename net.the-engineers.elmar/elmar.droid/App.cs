@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Android.App;
 using Android.Runtime;
 using elmar.droid.Common;
@@ -24,7 +25,7 @@ namespace elmar.droid
 
             Container.Register<Connection>().AsSingleton();
             Container.Register<VoiceOutput>().AsSingleton();
-            
+
             Container.Register<TTSChecker>().AsSingleton();
             Container.Register<LanguageManager>().AsSingleton();
             Container.Register<SettingsManager>().AsSingleton();
@@ -44,21 +45,41 @@ namespace elmar.droid
             var commandRepository = Container.Resolve<CommandRepository>();
             var commandManager = Container.Resolve<CommandManager>();
 
-            Command welcomeCommand = commandRepository.GetCommandByName("Welcome");
-            if (welcomeCommand == null)
+            AddCommand(commandRepository, commandManager, "Welcome", "hello", new List<Tuple<CommandStepTypeEnum, string>>()
             {
-                welcomeCommand = new Command() {Name = "Welcome", CommandText = "hello"};
-                var welcomeStep1 = commandManager.CreateStep(welcomeCommand, commandManager.GetCommandStepType(CommandStepTypeEnum.Talk));
-                var welcomeStep2 = commandManager.CreateStep(welcomeCommand, commandManager.GetCommandStepType(CommandStepTypeEnum.Talk));
+                new Tuple<CommandStepTypeEnum, string>(CommandStepTypeEnum.Talk, "hi"),
+                new Tuple<CommandStepTypeEnum, string>(CommandStepTypeEnum.Talk, "{CurrentUser.Name}")
+            });
 
-                welcomeStep1.Parameter = "hi";
-                welcomeStep2.Parameter = "{CurrentUser.Name}";
+            AddCommand(commandRepository, commandManager, "Time", "time", new List<Tuple<CommandStepTypeEnum, string>>()
+            {
+                new Tuple<CommandStepTypeEnum, string>(CommandStepTypeEnum.Time, "")
+            });
+        }
 
-                welcomeCommand.Steps.Add(welcomeStep1);
-                welcomeCommand.Steps.Add(welcomeStep2);
+        private void AddCommand(CommandRepository commandRepository, CommandManager commandManager, string commandName, string commandText, List<Tuple<CommandStepTypeEnum, string>> steps)
+        {
+            Command command = commandRepository.GetCommandByName(commandName);
+            if (command == null)
+            {
+                command = new Command() { Name = commandName, CommandText = commandText };
+                foreach (var step in steps)
+                {
+                    AddStepToCommand(commandManager, command, step.Item1, step.Item2);
+                }
 
-                commandRepository.Save(welcomeCommand);
+                commandRepository.Save(command);
             }
+        }
+
+        private CommandStep AddStepToCommand(CommandManager commandManager, Command command, CommandStepTypeEnum commandStepTypeEnum, string parameter)
+        {
+            var commandStep = commandManager.CreateStep(command, commandManager.GetCommandStepType(commandStepTypeEnum));
+            commandStep.Parameter = parameter;
+
+            command.Steps.Add(commandStep);
+
+            return commandStep;
         }
 
         private void InitDatabase()

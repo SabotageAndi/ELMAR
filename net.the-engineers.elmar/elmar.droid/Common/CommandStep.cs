@@ -16,7 +16,8 @@ namespace elmar.droid.Common
 {
     enum CommandStepTypeEnum
     {
-        Talk
+        Talk,
+        Time
     }
 
     class CommandStepType
