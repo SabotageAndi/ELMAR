@@ -72,17 +72,15 @@ namespace elmar.droid
             _commandName.Click += CommandNameClick;
             _commandText.Click += CommandTextOnClick;
             _addStepButton.Click += AddStepButtonOnClick;
-            _stepList.ItemClick += OnStepItemClick;
+            _stepAdapter.ItemSelected += OnStepItemClick;
         }
 
-        private void OnStepItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        private void OnStepItemClick(object sender, CommandStep commandStep)
         {
-            var step = _stepAdapter[e.Position];
-
-            switch (step.Type)
+            switch (commandStep.Type)
             {
                 case CommandStepTypeEnum.Talk:
-                    OpenEditDialog(step.Parameter, Resource.String.OutputLanguage, (text) => { step.Parameter = text; });
+                    OpenEditDialog(commandStep.Parameter, Resource.String.OutputLanguage, (text) => { commandStep.Parameter = text; });
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -208,6 +206,8 @@ namespace elmar.droid
             private readonly CommandManager _commandManager;
             private List<CommandStep> _steps = new List<CommandStep>();
 
+            public event EventHandler<CommandStep> ItemSelected; 
+
             public StepAdapter(Context context, CommandManager commandManager)
             {
                 _context = context;
@@ -221,29 +221,56 @@ namespace elmar.droid
 
             public override View GetView(int position, View convertView, ViewGroup parent)
             {
+                ImageButton moveDownOrder;
+                ImageButton moveUpOrder;
+
+
                 if (convertView == null)
                 {
                     var layoutInflater = LayoutInflater.FromContext(_context);
                     convertView = layoutInflater.Inflate(Resource.Layout.command_step_item, null);
+
+                    moveDownOrder = convertView.FindViewById<ImageButton>(Resource.Id.moveDownOrder);
+                    moveUpOrder = convertView.FindViewById<ImageButton>(Resource.Id.moveUpOrder);
+                    moveDownOrder.Click += MoveUpOrder_Click;
+                    moveUpOrder.Click += MoveDownOrder_Click;
+                    convertView.Click += ItemClick;
                 }
+
+                convertView.Tag = position;
+
+                moveDownOrder = convertView.FindViewById<ImageButton>(Resource.Id.moveDownOrder);
+                moveUpOrder = convertView.FindViewById<ImageButton>(Resource.Id.moveUpOrder);
 
                 var step = this[position];
 
+                moveDownOrder.Tag = position;
+                moveUpOrder.Tag = position;
+
                 var stepName = convertView.FindViewById<TextView>(Resource.Id.stepName);
-                var moveDownOrder = convertView.FindViewById<ImageButton>(Resource.Id.moveDownOrder);
-                var moveUpOrder = convertView.FindViewById<ImageButton>(Resource.Id.moveUpOrder);
+                
 
                 var stepType = _commandManager.GetCommandStepType(step.Type);
                 stepName.Text = stepType.Name;
 
-                moveDownOrder.Click += (sender, args) => MoveUpOrder_Click(sender, args, position);
-                moveUpOrder.Click += (sender, args) => MoveDownOrder_Click(sender, args, position);
+                
 
                 return convertView;
             }
 
-            private void MoveUpOrder_Click(object sender, EventArgs e, int position)
+            private void ItemClick(object sender, EventArgs e)
             {
+                int position = (int)((View)sender).Tag;
+
+                var item = this[position];
+
+                OnItemSelected(item);
+            }
+
+            private void MoveUpOrder_Click(object sender, EventArgs e)
+            {
+                int position = (int)((ImageButton) sender).Tag;
+
                 var step = this[position];
                 if (_steps.Last() == step)
                 {
@@ -259,8 +286,10 @@ namespace elmar.droid
 
             }
 
-            private void MoveDownOrder_Click(object sender, EventArgs e, int position)
+            private void MoveDownOrder_Click(object sender, EventArgs e)
             {
+                int position = (int)((ImageButton)sender).Tag;
+
                 var step = this[position];
                 if (_steps.First() == step)
                 {
@@ -290,6 +319,11 @@ namespace elmar.droid
             {
                 _steps.Add(commandStep);
                 NotifyDataSetChanged();
+            }
+
+            protected virtual void OnItemSelected(CommandStep e)
+            {
+                ItemSelected?.Invoke(this, e);
             }
         }
     }

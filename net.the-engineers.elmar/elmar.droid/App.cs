@@ -29,6 +29,7 @@ namespace elmar.droid
             Container.Register<LanguageManager>().AsSingleton();
             Container.Register<SettingsManager>().AsSingleton();
             Container.Register<EventManager>().AsSingleton();
+            Container.Register<CommandManager>().AsSingleton();
 
 
             InitDatabase();
@@ -51,7 +52,7 @@ namespace elmar.droid
                 var welcomeStep2 = commandManager.CreateStep(welcomeCommand, commandManager.GetCommandStepType(CommandStepTypeEnum.Talk));
 
                 welcomeStep1.Parameter = "hi";
-                welcomeStep2.Parameter = "{CurrentUser.Firstname}";
+                welcomeStep2.Parameter = "{CurrentUser.Name}";
 
                 welcomeCommand.Steps.Add(welcomeStep1);
                 welcomeCommand.Steps.Add(welcomeStep2);
