@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Android.Accounts;
@@ -11,16 +12,16 @@ namespace elmar.droid.Common
     {
         private readonly Context _context;
         private readonly CommandRepository _commandRepository;
-        private readonly  List<CommandStepType> _commandStepTypes = new List<CommandStepType>(); 
+        private readonly List<CommandStepType> _commandStepTypes = new List<CommandStepType>();
 
-        private Dictionary<string, string> _systemParameters = new Dictionary<string, string>(); 
+        private Dictionary<string, string> _systemParameters = new Dictionary<string, string>();
 
         public CommandManager(Context context, TalkCommandStepAction talkCommandStepAction, CommandRepository commandRepository, TimeCommandStepAction timeCommandStepAction)
         {
             _context = context;
             _commandRepository = commandRepository;
-            _commandStepTypes.Add(new CommandStepType() {Name = "Talk", Type = CommandStepTypeEnum.Talk, CommandStepAction = talkCommandStepAction});
-            _commandStepTypes.Add(new CommandStepType() {Name = "Time", Type = CommandStepTypeEnum.Time, CommandStepAction = timeCommandStepAction });
+            _commandStepTypes.Add(new CommandStepType() { Name = "Talk", Type = CommandStepTypeEnum.Talk, CommandStepAction = talkCommandStepAction });
+            _commandStepTypes.Add(new CommandStepType() { Name = "Time", Type = CommandStepTypeEnum.Time, CommandStepAction = timeCommandStepAction });
 
             AddSystemParameters();
         }
@@ -38,7 +39,7 @@ namespace elmar.droid.Common
 
                 name = cursor.GetString(cursor.GetColumnIndex("display_name"));
             }
-           
+
 
             _systemParameters["{CurrentUser.Name}"] = name;
         }
@@ -105,6 +106,18 @@ namespace elmar.droid.Common
         private Command FindCommand(string commandName)
         {
             return _commandRepository.GetCommand(commandName);
+        }
+
+        public string GetHumanReadableParameter(CommandStep step)
+        {
+            switch (step.Type)
+            {
+                case CommandStepTypeEnum.Talk:
+                    return step.Parameter;
+                case CommandStepTypeEnum.Time:
+                default:
+                    return string.Empty;
+            }
         }
     }
 }

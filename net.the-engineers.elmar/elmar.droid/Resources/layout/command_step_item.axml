@@ -2,10 +2,22 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/SettingsEntry"
     android:focusable="true">
-    <TextView
+    <LinearLayout
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:id="@+id/stepName" />
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginRight="100dp">
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/stepName" />
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/stepParameter"
+            android:layout_gravity="right"
+            android:gravity="right" />
+    </LinearLayout>
     <RelativeLayout
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"

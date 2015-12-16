@@ -241,18 +241,19 @@ namespace elmar.droid
 
                 moveDownOrder = convertView.FindViewById<ImageButton>(Resource.Id.moveDownOrder);
                 moveUpOrder = convertView.FindViewById<ImageButton>(Resource.Id.moveUpOrder);
+                var stepName = convertView.FindViewById<TextView>(Resource.Id.stepName);
+                var stepParameter = convertView.FindViewById<TextView>(Resource.Id.stepParameter);
 
                 var step = this[position];
 
                 moveDownOrder.Tag = position;
                 moveUpOrder.Tag = position;
 
-                var stepName = convertView.FindViewById<TextView>(Resource.Id.stepName);
                 
 
                 var stepType = _commandManager.GetCommandStepType(step.Type);
                 stepName.Text = stepType.Name;
-
+                stepParameter.Text = _commandManager.GetHumanReadableParameter(step);
                 
 
                 return convertView;
