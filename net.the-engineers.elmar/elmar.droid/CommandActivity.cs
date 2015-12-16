@@ -206,7 +206,7 @@ namespace elmar.droid
         {
             private readonly Context _context;
             private readonly CommandManager _commandManager;
-            private readonly List<CommandStep> _steps = new List<CommandStep>();
+            private List<CommandStep> _steps = new List<CommandStep>();
 
             public StepAdapter(Context context, CommandManager commandManager)
             {
@@ -230,11 +230,50 @@ namespace elmar.droid
                 var step = this[position];
 
                 var stepName = convertView.FindViewById<TextView>(Resource.Id.stepName);
+                var moveDownOrder = convertView.FindViewById<ImageButton>(Resource.Id.moveDownOrder);
+                var moveUpOrder = convertView.FindViewById<ImageButton>(Resource.Id.moveUpOrder);
 
                 var stepType = _commandManager.GetCommandStepType(step.Type);
                 stepName.Text = stepType.Name;
 
+                moveDownOrder.Click += (sender, args) => MoveUpOrder_Click(sender, args, position);
+                moveUpOrder.Click += (sender, args) => MoveDownOrder_Click(sender, args, position);
+
                 return convertView;
+            }
+
+            private void MoveUpOrder_Click(object sender, EventArgs e, int position)
+            {
+                var step = this[position];
+                if (_steps.Last() == step)
+                {
+                    return;
+                }
+
+                var nextStep = this[position + 1];
+                step.Order++;
+                nextStep.Order--;
+
+                _steps = _steps.OrderBy(i => i.Order).ToList();
+                NotifyDataSetChanged();
+
+            }
+
+            private void MoveDownOrder_Click(object sender, EventArgs e, int position)
+            {
+                var step = this[position];
+                if (_steps.First() == step)
+                {
+                    return;
+                }
+
+                var nextStep = this[position - 1];
+                step.Order--;
+                nextStep.Order++;
+
+                _steps = _steps.OrderBy(i => i.Order).ToList();
+                NotifyDataSetChanged();
+
             }
 
             public override int Count => _steps.Count;

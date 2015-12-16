@@ -26,6 +26,7 @@ namespace elmar.droid.Common
             var commandStep = new CommandStep();
             commandStep.CommandId = command.Id;
             commandStep.Type = commandStepType.Type;
+            commandStep.Order = command.Steps.Count;
 
             return commandStep;
         }

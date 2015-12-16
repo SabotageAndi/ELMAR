@@ -58,7 +58,7 @@ namespace elmar.droid.Common
 
             if (command != null)
             {
-                command.Steps = _connection.Current.Table<CommandStep>().Where(cs => cs.CommandId == commandId).ToList();
+                command.Steps = _connection.Current.Table<CommandStep>().Where(cs => cs.CommandId == commandId).OrderBy(cs => cs.Order).ToList();
             }
 
             return command;
